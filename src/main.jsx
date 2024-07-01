@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
+import Results from './components/Results/Results.jsx'; // Results.jsx 경로 설정
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -13,7 +13,18 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    children: [],
+    children: [
+      {
+        path: '/',
+        element: <Results />,
+        errorElement: <ErrorPage />,
+        children: [],
+      }
+    ],
+  },
+  {
+    path: '/results', // Add the path for Results
+    element: <Results />,
   },
 ]);
 
