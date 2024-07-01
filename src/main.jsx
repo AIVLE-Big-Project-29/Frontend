@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebvitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 
 import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
+import LoginPage from './components/login/LoginPage.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -13,7 +14,14 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    children: [],
+    children: [
+      {
+        path: '/',
+        element: <LoginPage />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+    ],
   },
 ]);
 
