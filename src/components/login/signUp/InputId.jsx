@@ -1,6 +1,6 @@
-import * as SC from './styled';
+import * as SC from '../InnerBlock/styled';
 
-const InputIdPw = ({ loginInfo, onChange, onSubmit }) => {
+const InputIdPw = ({ signUpInfo, onChange, onSubmit }) => {
   return (
     <SC.Frame onSubmit={onSubmit}>
       <SC.InputId
@@ -16,10 +16,17 @@ const InputIdPw = ({ loginInfo, onChange, onSubmit }) => {
         name="Pw"
         placeholder="PassWord"
         onChange={onChange}
-      ></SC.InputId>
+      />
+      <SC.InputId
+        type="password"
+        id="confirmPw"
+        name="confirmPw"
+        placeholder="confirm Pw"
+        onChange={onChange}
+      />
       <SC.InputBtn type="submit">
         <SC.BtnText>
-          <SC.Text>Sign In</SC.Text>
+          <SC.Text>Sign Up</SC.Text>
         </SC.BtnText>
       </SC.InputBtn>
     </SC.Frame>

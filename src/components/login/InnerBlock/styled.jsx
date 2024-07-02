@@ -109,7 +109,7 @@ export const BtnText = styled.div`
   align-items: flex-start;
   padding: 0px;
 
-  width: 58px;
+  width: 60px;
   height: 28px;
 
   border-radius: 8px;

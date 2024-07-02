@@ -3,7 +3,7 @@ import { Fonts } from '../../tokens/Font';
 
 export const SignIn = styled.div`
   position: relative;
-  width: 1440px;
+  width: 100vw;
   height: 100vh;
 
   background: linear-gradient(0deg, #f7f9fb, #f7f9fb), #ffffff;
@@ -26,7 +26,7 @@ export const Header = styled.header`
   gap: 8px;
 
   margin: 0 auto;
-  width: 1377px;
+  width: 97vw;
   height: 28px;
 
   border-radius: 8px;

@@ -1,29 +1,32 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import * as SC from './styled';
-import InputIdPw from './InputIdPw';
+import * as SC from '../InnerBlock/styled';
 import logo from '../../../assets/images/logo.svg';
 import line from '../../../assets/images/Line.svg';
-import UnderBar from './UnderBar';
+import InputId from './InputId';
 import ErrorPage from '../../ErrorPage';
 
 const InnerBlock = () => {
-  const [loginInfo, setLoginInfo] = useState({
+  const [signUpInfo, setSignUpInfo] = useState({
     Id: '',
     Pw: '',
+    confirmPw: '',
   });
   const [error, setError] = useState('');
 
   const validateForm = () => {
-    if (!loginInfo.Id) {
+    if (!signUpInfo.Id) {
       return 'Id를 입력하세요';
     }
-    if (!loginInfo.Pw) {
-      return 'Password를 입력하세요';
+    if (!signUpInfo.Pw) {
+      return '비밀번호를 입력하세요';
     }
-    if (loginInfo.Pw.length < 8) {
-      return 'Password는 8자 이상이여야 합니다.';
+    if (signUpInfo.Pw.length < 8) {
+      return '비밀번호는 8자 이상이여야 합니다';
+    }
+    if (signUpInfo.confirmPw !== signUpInfo.Pw) {
+      return '비밀번호가 일치하지 않습니다';
     }
 
     return null;
@@ -31,7 +34,7 @@ const InnerBlock = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setLoginInfo((prev) => ({
+    setSignUpInfo((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -49,15 +52,15 @@ const InnerBlock = () => {
 
       try {
         // 입력 오류가 없으면 데이터 전송
-        const response = await axios.post('http://localhost:8000/api/login/', {
-          username: loginInfo.Id,
-          password: loginInfo.Pw,
+        const response = await axios.post('signup api', {
+          id: signUpInfo.Id,
+          pw: signUpInfo.Pw,
         });
-        console.log('로그인 성공', response.data);
+        console.log('회원가입 성공', response.data);
         // 로그인 성공 후 처리 로직 추가
       } catch (error) {
-        console.error('로그인 실패', error);
-        setError('로그인 실패. Id와 Pw를 확인하세요.');
+        console.error('회원가입 실패', error);
+        setError('회원가입 실패. Id와 Pw를 확인하세요.');
       }
     }
   };
@@ -73,13 +76,12 @@ const InnerBlock = () => {
       <SC.Partition>
         <img src={line} alt="line" />
       </SC.Partition>
-      <InputIdPw
-        loginInfo={loginInfo}
+      <InputId
+        signUpInfo={signUpInfo}
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
       {error && <ErrorPage>{error}</ErrorPage>}
-      <UnderBar></UnderBar>
     </SC.InnerFrame>
   );
 };

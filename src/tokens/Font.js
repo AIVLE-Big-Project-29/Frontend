@@ -11,6 +11,12 @@ export const Fonts = {
     fontWeight: '400',
     lineHeight: '28px',
   },
+  'font-semibold-20': {
+    fontSize: '20px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '700',
+    lineHeight: '16px',
+  },
   'font-semibold-24': {
     fontSize: '24px',
     fontFamily: 'SF Pro Text',
