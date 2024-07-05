@@ -1,29 +1,14 @@
 import React from 'react';
+import Section from './Section';
 import * as SC from './style';
+import Footer from './Footer/Footer';
 
-const Section = ({ title, items }) => (
-  <SC.Section>
-    <SC.SectionTitle>{title}</SC.SectionTitle>
-    <SC.List>
-      {items.map((item, index) => (
-        <SC.ListItem key={index}>{item}</SC.ListItem>
-      ))}
-    </SC.List>
-  </SC.Section>
-);
+import img1 from '../../../../assets/images/1.svg';
+import img2 from '../../../../assets/images/2.svg';
+import img3 from '../../../../assets/images/3.svg';
+import img4 from '../../../../assets/images/4.svg';
 
-const Footer = () => (
-  <SC.Sidebar>
-    <SC.SidebarContent>
-      <SC.Button>Clear conversations</SC.Button>
-      <SC.Button>Light mode</SC.Button>
-      <SC.Button>My account</SC.Button>
-      <SC.Button>Log out</SC.Button>
-    </SC.SidebarContent>
-  </SC.Sidebar>
-);
-
-const DataRequirement = () => {
+const DataRequirementContent = () => {
   const dataItems = [
     '대기 오염 데이터.csv',
     '"Got any creative ideas for a 10-year-old\'s birthday?"',
@@ -49,18 +34,22 @@ const DataRequirement = () => {
   ];
 
   return (
-    <SC.Container>
-      <Footer />
       <SC.Content>
-        <SC.Header>데이터 요구사항</SC.Header>
+        <SC.Header>
+          <SC.IconImage1 src={img1} alt="Icon 1" />
+          데이터 요구사항
+        </SC.Header>
         <SC.Main>
+          <SC.IconImage2 src={img2} alt="Icon 2" />
           <Section title="Data" items={dataItems} />
+          <SC.IconImage2 src={img3} alt="Icon 3" />
           <Section title="Column names" items={columnNamesItems} />
+          <SC.IconImage2 src={img4} alt="Icon 4" />
           <Section title="Explanation" items={explanationItems} />
         </SC.Main>
+          <Footer />
       </SC.Content>
-    </SC.Container>
   );
 };
 
-export default DataRequirement;
+export default DataRequirementContent;

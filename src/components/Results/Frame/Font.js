@@ -5,12 +5,28 @@ export const Fonts = {
     fontWeight: '400',
     lineHeight: '20px',
   },
+
+  'font-regular-16': {
+    fontSize: '16px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '400',
+    lineHeight: '20px',
+  },
+
   'font-regular-18': {
     fontSize: '18px',
     fontFamily: 'SF Pro Text',
-    fontWeight: '400',
+    fontWeight: '600',
     lineHeight: '28px',
   },
+
+  'font-regular-20': {
+    fontSize: '20px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '600',
+    lineHeight: '28px',
+  },
+
   'font-semibold-24': {
     fontSize: '24px',
     fontFamily: 'SF Pro Text',

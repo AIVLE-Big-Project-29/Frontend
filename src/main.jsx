@@ -7,7 +7,7 @@ import './index.css';
 import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import LoginPage from './components/login/LoginPage.jsx';
-import Results from './components/Results/Results.jsx'; // Results.jsx 경로 설정
+import Results from './components/Results/MainContent.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -23,9 +23,9 @@ const router = createBrowserRouter([
         children: [],
       },
       {
-        path: '/results', // Add the path for Results
-        element: <Results />,
-        errorElement: <ErrorPage />,
+       path: '/Results',
+       element: <Results />,
+       errorElement: <ErrorPage />,
       },
     ],
   },
