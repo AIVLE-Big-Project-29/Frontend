@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebvitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+import './tokens/font.css';
 
 import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import LoginPage from './components/login/LoginPage.jsx';
+import SignUpPage from './components/login/signUp/SignUpPage.jsx';
+import MainPage from './components/main/MainPage.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <LoginPage />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/signup',
+        element: <SignUpPage />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/main',
+        element: <MainPage />,
         errorElement: <ErrorPage />,
         children: [],
       },

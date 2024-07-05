@@ -5,6 +5,12 @@ export const Fonts = {
     fontWeight: '400',
     lineHeight: '20px',
   },
+  'font-regular-16': {
+    fontSize: '16px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '400',
+    lineHeight: '26px',
+  },
   'font-regular-18': {
     fontSize: '18px',
     fontFamily: 'SF Pro Text',
@@ -22,5 +28,35 @@ export const Fonts = {
     fontFamily: 'SF Pro Text',
     fontWeight: '600',
     lineHeight: '32px',
+  },
+  'font-semibold-30': {
+    fontSize: '30px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '400',
+    lineHeight: '39px',
+  },
+  'font-semibold-32': {
+    fontSize: '32px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '600',
+    lineHeight: '37px',
+  },
+  'font-semibold-60': {
+    fontSize: '60px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '600',
+    lineHeight: '60px',
+  },
+  'font-semibold-64': {
+    fontSize: '64px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '400',
+    lineHeight: '76px',
+  },
+  'font-bold-90': {
+    fontSize: '90px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '700',
+    lineHeight: '76px',
   },
 };
