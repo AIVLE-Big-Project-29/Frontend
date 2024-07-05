@@ -22,9 +22,9 @@ const InnerBlock = () => {
     if (!loginInfo.Pw) {
       return 'Password를 입력하세요';
     }
-    if (loginInfo.Pw.length < 8) {
-      return 'Password는 8자 이상이여야 합니다.';
-    }
+    // if (loginInfo.Pw.length < 8) {
+    //   return 'Password는 8자 이상이여야 합니다.';
+    // }
 
     return null;
   };
@@ -48,10 +48,17 @@ const InnerBlock = () => {
       setError('');
 
       try {
+        console.log(loginInfo);
+
         // 입력 오류가 없으면 데이터 전송
-        const response = await axios.post('http://localhost:8000/api/login/', {
-          username: loginInfo.Id,
-          password: loginInfo.Pw,
+        const response = await axios({
+          method: 'post',
+          url: 'http://192.168.0.6:8000/user_api/login/',
+          withCredentials: false,
+          data: {
+            username: loginInfo.Id,
+            password: loginInfo.Pw,
+          },
         });
         console.log('로그인 성공', response.data);
         // 로그인 성공 후 처리 로직 추가
