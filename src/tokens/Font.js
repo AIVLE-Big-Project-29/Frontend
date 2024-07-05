@@ -59,4 +59,10 @@ export const Fonts = {
     fontWeight: '700',
     lineHeight: '76px',
   },
+  'font-semibold-36': {
+    fontSize: '36px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '1000',
+    lineHeight: '32px',
+  },
 };
