@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import * as SC from './styled';
@@ -9,6 +10,7 @@ import UnderBar from './UnderBar';
 import ErrorPage from '../../ErrorPage';
 
 const InnerBlock = () => {
+  const navigate = useNavigate();
   const [loginInfo, setLoginInfo] = useState({
     Id: '',
     Pw: '',
@@ -61,7 +63,17 @@ const InnerBlock = () => {
           },
         });
         console.log('로그인 성공', response.data);
-        // 로그인 성공 후 처리 로직 추가
+        // 로그인 성공 후 웹 스토리지에 토큰 저장, 메인 페이지로 이동
+        localStorage.setItem(
+          'accessToken',
+          response.data.headers['authorization']
+        );
+        localStorage.setItem(
+          'refreshToken',
+          response.data.headers['refresh-token']
+        );
+
+        navigate('/main');
       } catch (error) {
         console.error('로그인 실패', error);
         setError('로그인 실패. Id와 Pw를 확인하세요.');

@@ -122,7 +122,7 @@ export const MainBlock = styled.div`
   width: 680px;
   height: 700px;
   left: calc(50% - 680px / 2 + 0.5px);
-  top: calc(50% - 700px / 2);
+  top: calc(55% - 700px / 2);
 
   background: linear-gradient(
       0deg,
