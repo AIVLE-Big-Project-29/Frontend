@@ -65,34 +65,4 @@ export const Fonts = {
     fontWeight: '1000',
     lineHeight: '32px',
   },
-  'font-semibold-30': {
-    fontSize: '30px',
-    fontFamily: 'SF Pro Text',
-    fontWeight: '400',
-    lineHeight: '39px',
-  },
-  'font-semibold-32': {
-    fontSize: '32px',
-    fontFamily: 'SF Pro Text',
-    fontWeight: '600',
-    lineHeight: '37px',
-  },
-  'font-semibold-60': {
-    fontSize: '60px',
-    fontFamily: 'SF Pro Text',
-    fontWeight: '600',
-    lineHeight: '60px',
-  },
-  'font-semibold-64': {
-    fontSize: '64px',
-    fontFamily: 'SF Pro Text',
-    fontWeight: '400',
-    lineHeight: '76px',
-  },
-  'font-bold-90': {
-    fontSize: '90px',
-    fontFamily: 'SF Pro Text',
-    fontWeight: '700',
-    lineHeight: '76px',
-  },
 };
