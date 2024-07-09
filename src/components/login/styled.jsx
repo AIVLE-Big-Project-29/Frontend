@@ -100,6 +100,7 @@ export const SignInText = styled.p`
   ${Fonts['font-regular-14']}
 
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
   font-feature-settings:
@@ -117,13 +118,11 @@ export const MainBlock = styled.div`
   padding: 24px;
   gap: 24px;
   isolation: isolate;
-
   position: absolute;
-  width: 680px;
-  height: 700px;
-  left: calc(50% - 680px / 2 + 0.5px);
+  width: 580px;
+  height: 600px;
+  left: calc(50% - 580px / 2 + 0.5px);
   top: calc(55% - 700px / 2);
-
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.4),
@@ -131,7 +130,6 @@ export const MainBlock = styled.div`
     ),
     rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
-  /* Note: backdrop-filter has minimal browser support */
   border-radius: 32px;
 `;
 
@@ -144,20 +142,12 @@ export const MainBlockHeader = styled.div`
   align-content: flex-start;
   padding: 0px;
   gap: 8px;
-
   position: absolute;
-  width: 680px;
+  width: 580px;
   height: 40px;
   left: 24px;
   top: 24px;
-
   border-radius: 8px;
-
-  /* Inside auto layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  z-index: 1;
 `;
 
 export const CloseBtn = styled.button`

@@ -26,14 +26,14 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   padding: 0px;
 
-  width: 79px;
+  width: 83px;
   height: 32px;
 
   border-radius: 8px;
 `;
 
 export const SignInText = styled.p`
-  width: 79px;
+  width: 83px;
   height: 32px;
 
   ${Fonts['font-semibold-24']}

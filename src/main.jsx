@@ -11,6 +11,7 @@ import LoginPage from './components/login/LoginPage.jsx';
 import SignUpPage from './components/login/signUp/SignUpPage.jsx';
 import MainPage from './components/main/MainPage.jsx';
 import Results from './components/Results/MainContent.jsx';
+import Notice from './components/notice/Notice.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
       {
         path: '/results',
         element: <Results />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/notice',
+        element: <Notice />,
         errorElement: <ErrorPage />,
         children: [],
       },
