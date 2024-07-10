@@ -8,6 +8,7 @@ import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import LoginPage from './components/login/LoginPage.jsx';
 import Results from './components/Results/MainContent.jsx';
+import Settings from './components/Settings/Frame.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -23,10 +24,15 @@ const router = createBrowserRouter([
         children: [],
       },
       {
-       path: '/Results',
+       path: '/results',
        element: <Results />,
        errorElement: <ErrorPage />,
       },
+      {
+        path: '/settings',
+        element: <Settings />,
+        errorElement: <ErrorPage />,
+      }
     ],
   },
 ]);
