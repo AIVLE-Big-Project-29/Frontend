@@ -11,24 +11,39 @@ import ErrorPage from '../../ErrorPage';
 
 const InnerBlock = () => {
   const navigate = useNavigate();
+  //로그인 입력 저장
   const [loginInfo, setLoginInfo] = useState({
     Id: '',
     Pw: '',
   });
-  const [error, setError] = useState('');
+  // 에러 문구 저장
+  const [error, setError] = useState({
+    Id: '',
+    Pw: '',
+    general: '',
+  });
 
   const validateForm = () => {
+    // id, pw 에러 분리해서 전달
+    let errorMsg = { Id: '', Pw: '' };
+
     if (!loginInfo.Id) {
-      return 'Id를 입력하세요';
+      errorMsg.Id = '아이디를 입력하세요';
+    }
+    if (loginInfo.Id.length < 6 || loginInfo.Pw.length > 12) {
+      errorMsg.Id = '아이디는 6~12자 이내로 입력하셔야 합니다';
     }
     if (!loginInfo.Pw) {
-      return 'Password를 입력하세요';
+      errorMsg.Pw = '비밀번호를 입력하세요';
+    }
+    if (loginInfo.Pw.length < 8 || loginInfo.Pw.length > 20) {
+      errorMsg.Pw = '비밀번호는 8~20자 이내로 입력하셔야 합니다';
     }
     // if (loginInfo.Pw.length < 8) {
     //   return 'Password는 8자 이상이여야 합니다.';
     // }
 
-    return null;
+    return errorMsg;
   };
 
   const handleChange = (event) => {
@@ -37,6 +52,11 @@ const InnerBlock = () => {
       ...prev,
       [name]: value,
     }));
+    setError((prev) => ({
+      ...prev,
+      [name]: '',
+      general: '',
+    }));
   };
 
   const handleSubmit = async (event) => {
@@ -44,10 +64,10 @@ const InnerBlock = () => {
     // id, pw 입력 확인
     const validateError = validateForm();
     // 입력 오류가 있으면 error 설정
-    if (validateError) {
+    if (validateError.Id || validateError.Pw) {
       setError(validateError);
     } else {
-      setError('');
+      setError({ Id: '', Pw: '', general: '' });
 
       try {
         console.log(loginInfo);
@@ -55,7 +75,7 @@ const InnerBlock = () => {
         // 입력 오류가 없으면 데이터 전송
         const response = await axios({
           method: 'post',
-          url: 'http://192.168.0.6:8000/user_api/login/',
+          url: 'http://192.168.10.59:8000/user_api/login/',
           withCredentials: false,
           data: {
             username: loginInfo.Id,
@@ -76,7 +96,7 @@ const InnerBlock = () => {
         navigate('/main');
       } catch (error) {
         console.error('로그인 실패', error);
-        setError('로그인 실패. Id와 Pw를 확인하세요.');
+        setError({ ...error, general: '로그인 실패. Id와 Pw를 확인하세요.' });
       }
     }
   };
@@ -96,9 +116,10 @@ const InnerBlock = () => {
         loginInfo={loginInfo}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        error={error}
       />
-      {error && <ErrorPage>{error}</ErrorPage>}
-      <UnderBar></UnderBar>
+      {error.general && <ErrorPage>{error.general}</ErrorPage>}
+      <UnderBar />
     </SC.InnerFrame>
   );
 };

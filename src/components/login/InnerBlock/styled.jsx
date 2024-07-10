@@ -7,9 +7,14 @@ export const InnerFrame = styled.div`
   align-items: center;
   padding: 0px;
   gap: 28px;
-
   width: 313px;
   height: 448px;
+  border: none;
+  outline: none;
+  &:focus :active {
+    border: none;
+    outline: none;
+  }
 `;
 
 export const Logo = styled.div`
@@ -58,10 +63,15 @@ export const Frame = styled.form`
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 16px;
-
+  gap: 5px;
   width: 313px;
   height: 204px;
+  border: none;
+  outline: none;
+  &:focus :active {
+    border: none;
+    outline: none;
+  }
 `;
 
 export const InputId = styled.input`
@@ -72,15 +82,19 @@ export const InputId = styled.input`
   align-items: flex-start;
   padding: 16px 20px;
   gap: 4px;
-
   width: 313px;
   height: 56px;
-
   background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(28, 28, 28, 0.1);
+  border: 1px solid
+    ${(props) => (props.hasError ? 'red' : 'rgba(28, 28, 28, 0.1)')};
   border-radius: 16px;
-
   color: black;
+  outline: none;
+  &:focus {
+    outline: none;
+    border-color: ${(props) =>
+      props.hasError ? 'red' : 'rgba(28, 28, 28, 0.1)'};
+  }
 `;
 
 export const InputBtn = styled.button`
@@ -89,16 +103,19 @@ export const InputBtn = styled.button`
   justify-content: center;
   align-items: center;
   gap: 8px;
-
   width: 313px;
   height: 60px;
   min-height: 56px;
-
   background: linear-gradient(0deg, #375739, #375739), #1c1c1c;
   border-radius: 16px;
-
   &:hover {
     background: #213f36;
+  }
+  border: none;
+  outline: none;
+  &:focus :active {
+    border: none;
+    outline: none;
   }
 `;
 
@@ -106,10 +123,10 @@ export const BtnText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 0px;
 
-  width: 60px;
+  width: 160px;
   height: 28px;
 
   border-radius: 8px;
@@ -143,34 +160,40 @@ export const UnderBarFrame = styled.div`
 export const UnderBarSign = styled.p`
   width: 52px;
   height: 20px;
-
   ${Fonts['font-regular-14']}
-
-  font-feature-settings:
-    'ss01' on,
-    'cv01' on;
+  color: #355342;
 `;
 
 export const UnderBarForgot = styled.p`
   /* Forgot Password */
   width: 112px;
   height: 20px;
-
   ${Fonts['font-regular-14']}
-
-  font-feature-settings:
-    'ss01' on,
-    'cv01' on;
+  color: #355342;
 `;
 
 export const UnderBarContact = styled.p`
   /* Contact Us */
   width: 75px;
   height: 20px;
-
   ${Fonts['font-regular-14']}
+  color: #355342;
+`;
 
-  font-feature-settings:
-    'ss01' on,
-    'cv01' on;
+export const ErrorIdText = styled.p`
+  // 아이디 안내 및 에러 출력
+  width: 300px;
+  height: 20px;
+  ${Fonts['font-regular-14']}
+  color: red;
+  margin: 0;
+`;
+
+export const ErrorPwText = styled.p`
+  // 비번 안내 및 에러 출력
+  width: 300px;
+  height: 20px;
+  ${Fonts['font-regular-14']}
+  color: red;
+  margin: 0;
 `;

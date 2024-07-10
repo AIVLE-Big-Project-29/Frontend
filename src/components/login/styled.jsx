@@ -137,7 +137,7 @@ export const MainBlockHeader = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   align-content: flex-start;
   padding: 0px;
@@ -157,12 +157,19 @@ export const CloseBtn = styled.button`
   align-items: center;
   padding: 8px;
   gap: 8px;
-
   width: 40px;
   height: 40px;
-
   border-radius: 12px;
   background-color: transparent;
+  border: none;
+  outline: none;
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
 `;
 
 export const IconSet = styled.div`
@@ -171,10 +178,8 @@ export const IconSet = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0px;
-
   width: 20px;
   height: 20px;
-
   border-radius: 8px;
 `;
 
