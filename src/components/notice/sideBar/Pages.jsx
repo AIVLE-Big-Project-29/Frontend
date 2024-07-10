@@ -12,7 +12,7 @@ const Pages = () => {
     if (txt === 'main') {
       navigate('/main');
     } else if (txt === 'analysis') {
-      navigate('/analysis');
+      navigate('/results');
     }
   };
 
