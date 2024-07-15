@@ -25,8 +25,8 @@ export const Frame = styled.div`
   height: 570px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  position: absolute;
+  gap: 12px;
+  position: relative;
   background-color: white; // 선택적: 배경색 설정
 `;
 
