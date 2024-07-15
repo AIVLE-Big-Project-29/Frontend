@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebvitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import './index.css';
 import './tokens/font.css';
 
@@ -11,6 +12,8 @@ import LoginPage from './components/login/LoginPage.jsx';
 import SignUpPage from './components/login/signUp/SignUpPage.jsx';
 import MainPage from './components/main/MainPage.jsx';
 import Results from './components/Results/MainContent.jsx';
+import Notice from './components/notice/Notice.jsx';
+import EmailAuth from './components/login/email/EmailAuth.jsx';
 import Settings from './components/Settings/Frame.jsx';
 
 // 루트 경로 설정
@@ -41,6 +44,18 @@ const router = createBrowserRouter([
       {
         path: '/results',
         element: <Results />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/notice',
+        element: <Notice />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/email',
+        element: <EmailAuth />,
         errorElement: <ErrorPage />,
         children: [],
       },

@@ -1,35 +1,45 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import * as SC from '../InnerBlock/styled';
-import logo from '../../../assets/images/logo.svg';
+import logo from '../../../assets/images/GreenCity.png';
 import line from '../../../assets/images/Line.svg';
 import InputId from './InputId';
 import ErrorPage from '../../ErrorPage';
 
 const InnerBlock = () => {
+  const navigate = useNavigate();
   const [signUpInfo, setSignUpInfo] = useState({
     Id: '',
     Pw: '',
     confirmPw: '',
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState({
+    Id: '',
+    Pw: '',
+    general: '',
+  });
 
   const validateForm = () => {
+    let errorMsg = { Id: '', Pw: '' };
     if (!signUpInfo.Id) {
-      return 'Id를 입력하세요';
+      errorMsg.Id = '아이디를 입력하세요';
+    }
+    if (signUpInfo.Id.length < 6 || signUpInfo.Pw.length > 12) {
+      errorMsg.Id = '아이디는 6~12자 이내로 입력하셔야 합니다';
     }
     if (!signUpInfo.Pw) {
-      return '비밀번호를 입력하세요';
+      errorMsg.Pw = '비밀번호를 입력하세요';
     }
-    if (signUpInfo.Pw.length < 8) {
-      return '비밀번호는 8자 이상이여야 합니다';
+    if (signUpInfo.Pw.length < 8 || signUpInfo.Pw.length > 20) {
+      errorMsg.Pw = '비밀번호는 8~20자 이내로 입력하셔야 합니다';
     }
-    if (signUpInfo.confirmPw !== signUpInfo.Pw) {
-      return '비밀번호가 일치하지 않습니다';
-    }
+    // if (signUpInfo.Pw.length < 8) {
+    //   return 'Password는 8자 이상이여야 합니다.';
+    // }
 
-    return null;
+    return errorMsg;
   };
 
   const handleChange = (event) => {
@@ -38,30 +48,25 @@ const InnerBlock = () => {
       ...prev,
       [name]: value,
     }));
+    setError((prev) => ({
+      ...prev,
+      [name]: '',
+      general: '',
+    }));
+    console.log(signUpInfo);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     // id, pw 입력 확인
     const validateError = validateForm();
     // 입력 오류가 있으면 error 설정
-    if (validateError) {
+    if (validateError.Id || validateError.Pw) {
       setError(validateError);
     } else {
-      setError('');
-
-      try {
-        // 입력 오류가 없으면 데이터 전송
-        const response = await axios.post('signup api', {
-          id: signUpInfo.Id,
-          pw: signUpInfo.Pw,
-        });
-        console.log('회원가입 성공', response.data);
-        // 로그인 성공 후 처리 로직 추가
-      } catch (error) {
-        console.error('회원가입 실패', error);
-        setError('회원가입 실패. Id와 Pw를 확인하세요.');
-      }
+      setError({ Id: '', Pw: '', general: '' });
+      // 입력 오류가 없으면 이메일 인증 페이지로 넘어감
+      navigate('/email', { state: signUpInfo });
     }
   };
 
@@ -71,7 +76,7 @@ const InnerBlock = () => {
         <SC.LogoImg src={logo} alt="logo" />
       </SC.Logo>
       <SC.TextWrapper>
-        <SC.SignInText>Sign In</SC.SignInText>
+        <SC.SignInText>Sign Up</SC.SignInText>
       </SC.TextWrapper>
       <SC.Partition>
         <img src={line} alt="line" />
@@ -80,8 +85,16 @@ const InnerBlock = () => {
         signUpInfo={signUpInfo}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        error={error}
       />
-      {error && <ErrorPage>{error}</ErrorPage>}
+      {error.general && <ErrorPage>{error.general}</ErrorPage>}
+      {/* <Link
+        to="/email"
+        state={{
+          Id: signUpInfo.Id,
+          Pw: signUpInfo.Pw,
+        }}
+      /> */}
     </SC.InnerFrame>
   );
 };

@@ -1,22 +1,26 @@
 import * as SC from './styled';
 
-const InputIdPw = ({ loginInfo, onChange, onSubmit }) => {
+const InputIdPw = ({ onChange, onSubmit, error }) => {
   return (
     <SC.Frame onSubmit={onSubmit}>
       <SC.InputId
         type="text"
         id="Id"
         name="Id"
-        placeholder="Id"
+        placeholder="아이디"
         onChange={onChange}
+        hasError={error.Id}
       />
+      <SC.ErrorIdText>{error.Id}</SC.ErrorIdText>
       <SC.InputId
         type="password"
         id="Pw"
         name="Pw"
-        placeholder="PassWord"
+        placeholder="비밀번호"
         onChange={onChange}
-      ></SC.InputId>
+        hasError={error.Pw}
+      />
+      <SC.ErrorPwText>{error.Pw}</SC.ErrorPwText>
       <SC.InputBtn type="submit">
         <SC.BtnText>
           <SC.Text>Sign In</SC.Text>
