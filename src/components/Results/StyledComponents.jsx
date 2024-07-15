@@ -27,7 +27,7 @@ export const MainContent = styled.main`
   align-items: center;
   justify-content: space-evenly;
   padding: 0px;
-  gap: 80px;
+  gap: 10px;
   min-height: 612.4px; /* 최소 높이 설정 */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;

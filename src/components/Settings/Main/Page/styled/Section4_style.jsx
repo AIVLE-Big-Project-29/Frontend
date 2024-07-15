@@ -6,7 +6,7 @@ export const Section4 = styled.div`
   flex-wrap: wrap;
   align-items: center;
   align-content: flex-start;
-  padding: 8px 12px;
+  padding: 0px 12px;
   gap: 16px;
 
   width: 848px;

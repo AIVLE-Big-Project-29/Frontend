@@ -8,11 +8,21 @@ import * as SC3 from './styled/Section3_style';
 import * as SC4 from './styled/Section4_style';
 import * as SC5 from './styled/Section5_style';
 import * as SC6 from './styled/Section6_style';
+import Logout from '../../../logout/Logout';
 
 import img2 from '../../../../assets/images/._..png';
 import img from '../../../../assets/images/Section1.svg';
 
 const Page = () => {
+  const handleLogoutClick = () => {
+    // 로그아웃 버튼 클릭 시 실행할 동작들
+    console.log('로그아웃 버튼 클릭');
+    // 여기서 원하는 추가적인 동작을 수행할 수도 있습니다.
+
+    // Logout 컴포넌트의 handleLogout 함수 호출
+    Logout.handleLogout();
+  };
+
   return (
     <SC.Page>
       <SC.Profile>
@@ -58,7 +68,7 @@ const Page = () => {
       </EM2.EmptySection2>
 
       <SC5.Section5>
-        <SC5.SectionTitle5>Log out of all devices</SC5.SectionTitle5>
+        <SC5.SectionTitle5 onClick={handleLogoutClick}>Log out of all devices</SC5.SectionTitle5>
         <SC5.SectionContent5>Log out of all other active sessions on other devices besides this one.</SC5.SectionContent5>
         <SC5.IconButton src={img} alt="Icon" />
       </SC5.Section5>

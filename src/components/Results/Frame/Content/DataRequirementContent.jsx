@@ -2,7 +2,7 @@ import Section from './Section';
 import * as SC from './style';
 import Footer from './Footer/Footer';
 
-import img1 from '../../../../assets/images/1.svg';
+import img1 from '../../../../assets/images/GreenCityBig.png';
 import img2 from '../../../../assets/images/2.svg';
 import img3 from '../../../../assets/images/3.svg';
 import img4 from '../../../../assets/images/4.svg';
