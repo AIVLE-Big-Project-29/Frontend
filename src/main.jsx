@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebvitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+import './tokens/font.css';
 
 import RootLayout from './components/Root.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import LoginPage from './components/login/LoginPage.jsx';
+import SignUpPage from './components/login/signUp/SignUpPage.jsx';
+import MainPage from './components/main/MainPage.jsx';
 import Results from './components/Results/MainContent.jsx';
 import Settings from './components/Settings/Frame.jsx';
 
@@ -23,16 +26,6 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [],
       },
-      {
-       path: '/results',
-       element: <Results />,
-       errorElement: <ErrorPage />,
-      },
-      {
-        path: '/settings',
-        element: <Settings />,
-        errorElement: <ErrorPage />,
-      }
     ],
   },
 ]);

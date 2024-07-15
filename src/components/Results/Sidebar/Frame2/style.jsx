@@ -7,17 +7,10 @@ export const FrameContainer = styled.div`
   height: auto; /* 스크롤을 없애기 위해 auto 설정 */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   padding: 20px;
-`;
-
-export const Sidebar = styled.div`
-  width: 100%;
-  height: auto; /* 스크롤을 없애기 위해 auto 설정 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  gap: 1px;
 `;
 
 export const Section = styled.div`
@@ -31,50 +24,28 @@ export const Section = styled.div`
   border-radius: 5px;
 `;
 
-export const SidebarContent1 = styled.div`
-  width: 100%;
-  height: 10px;
+export const SidebarContent = styled.button`
+  width: 80%;
+  height: 24%;
+  padding: 2px;
+  background-color: white;
   display: flex;
   align-items: center;
   ${Fonts['font-regular-14']};
 `;
 
-export const SidebarContent2 = styled.div`
-  width: 100%;
-  height: 10px;
-  display: flex;
-  align-items: center;
-  ${Fonts['font-regular-14']};
-`;
-
-export const SidebarContent3 = styled.div`
-  width: 100%;
-  display: flex;
-  height: 10px;
-  align-items: center;
-  ${Fonts['font-regular-14']};
-`;
-
-export const SidebarContent4 = styled.div`
-  width: 100%;
-  height: 10px;
-  display: flex;
-  align-items: center;
-  ${Fonts['font-regular-14']};
-`;
-
-export const Button = styled.button`
-  padding: 10px 20px; /* 상대적인 값으로 수정 */
+export const Button = styled.p`
+  padding: 10px 20px;
   cursor: pointer;
-  margin-bottom: 10px; /* 상대적인 값으로 수정 */
+  margin-bottom: 10px;
+  padding: 0;
   border: none;
   border-radius: 5px;
   ${Fonts['font-regular-14']};
 `;
 
-
-export const IconImage3 = styled.img`
-  width: 30px;
-  height: 30px;
+export const IconImage = styled.img`
+  width: 24px;
+  height: 24px;
   margin-right: 10px;
 `;
