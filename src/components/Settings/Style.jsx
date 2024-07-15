@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const OuterContainer = styled.div`
+  width: 100vw; /* Viewport width */
+  height: 100vh; /* Viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0; /* 전체 배경색 */
+`;
+
 export const Container = styled.div`
   width: 1440px;
   height: 700px;
