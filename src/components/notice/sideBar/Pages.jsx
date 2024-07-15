@@ -22,19 +22,19 @@ const Pages = () => {
         <SC.Title>Pages</SC.Title>
       </SC.MenuTitle>
       <SC.Menues onClick={() => clickHandler('main')}>
-        <SC.PreIconWrapper>
+        {/* <SC.PreIconWrapper>
           <SC.PreIcon>
             <SC.ArrowIcon src={arrow} alt="화살 아이콘" />
           </SC.PreIcon>
-        </SC.PreIconWrapper>
-        <MenuIconText src={book} txt={'Main'} />
+        </SC.PreIconWrapper> */}
+        <MenuIconText src={book} txt={'Home'} />
       </SC.Menues>
       <SC.Menues onClick={() => clickHandler('analysis')}>
-        <SC.PreIconWrapper>
+        {/* <SC.PreIconWrapper>
           <SC.PreIcon>
             <SC.ArrowIcon src={arrow} alt="화살 아이콘" />
           </SC.PreIcon>
-        </SC.PreIconWrapper>
+        </SC.PreIconWrapper> */}
         <MenuIconText src={analysis} txt={'Analysis'} />
       </SC.Menues>
     </SC.PageMenu>

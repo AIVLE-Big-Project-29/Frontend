@@ -3,13 +3,15 @@ import * as SC from './styled';
 import email from '../../../assets/images/email.svg';
 import locDot from '../../../assets/images/location.svg';
 import phone from '../../../assets/images/phone.svg';
+import logo from '../../../assets/images/GreenCity.png';
 
 const Footer = () => {
   return (
     <SC.FooterContainer>
       <SC.SiteLogo>
-        <SC.LogoContainer></SC.LogoContainer>
-        <SC.LogoTEXT>SiteLogo</SC.LogoTEXT>
+        <SC.LogoContainer>
+          <SC.Logo src={logo} alt="로고" />
+        </SC.LogoContainer>
       </SC.SiteLogo>
       <SC.Menu>
         <SC.MenuText>이용약관</SC.MenuText>

@@ -21,7 +21,7 @@ const Profile = () => {
             </SC.Icon>
           </SC.IconWrapper>
           <SC.TextWrapper>
-            <SC.Text>Setting</SC.Text>
+            <SC.Text>My Account</SC.Text>
           </SC.TextWrapper>
         </SC.IconText>
       </SC.ProfileMenu>

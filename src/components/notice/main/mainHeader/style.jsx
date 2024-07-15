@@ -146,7 +146,7 @@ export const IconBtn = styled.button`
   transition: transform 200ms ease-in;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.4);
   }
   &:focus {
     border: none;

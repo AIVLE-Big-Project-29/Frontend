@@ -8,6 +8,7 @@ import * as SC from './styled';
 import mainImg from '../../../assets/images/mainBack.png';
 import Gallery from '../gallery/Gallery';
 import Footer from '../Footer/Footer';
+import NavSecond from './NavSecond';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,13 +140,14 @@ const MainContents = () => {
       <SC.Contents className="contents">
         <SC.Header className="hero-section">
           {/* navbar */}
-          <SC.HeaderWrapper>
-            <SC.nav>
+          {/* <SC.HeaderWrapper>
+            <SC.Nav>
               <SC.navMenu>도시숲 분석</SC.navMenu>
               <SC.navMenu>공지사항</SC.navMenu>
               <SC.navMenu>마이 프로필</SC.navMenu>
-            </SC.nav>
-          </SC.HeaderWrapper>
+            </SC.Nav>
+          </SC.HeaderWrapper> */}
+
           {/* 메인 화면 */}
           <SC.MainImg
             data-speed=".6"
@@ -156,11 +158,12 @@ const MainContents = () => {
           <SC.Container className="container">
             <SC.MainHeader data-speed=".8" className="main-header">
               <SC.MainTitle className="main-title">
-                Metropolitan Green Project
+                GreenCity Project
               </SC.MainTitle>
             </SC.MainHeader>
           </SC.Container>
         </SC.Header>
+        <NavSecond />
         {/* 스크롤 시작 */}
         <Gallery />
         {/* footer */}

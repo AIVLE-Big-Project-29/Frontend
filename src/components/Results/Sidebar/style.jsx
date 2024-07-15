@@ -25,6 +25,7 @@ export const Frame2Container = styled.div`
   background-color: #ffffff; /* Frame2 배경색 설정 */
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
   padding: 20px;
 `;

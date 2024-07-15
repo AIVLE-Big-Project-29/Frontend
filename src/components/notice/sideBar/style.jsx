@@ -113,7 +113,7 @@ export const ProfileMenu = styled.button`
     transition: width 0.3s;
     position: absolute;
     bottom: 0;
-    left: 20px;
+    left: 30px;
   }
   &:hover::after {
     width: 40%;
