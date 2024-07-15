@@ -23,8 +23,6 @@ export const Container = styled.div`
 export const Frame = styled.div`
   width: 1176px;
   height: 570px;
-  left: calc(50% - 1176px/2);
-  top: calc(50% - 570px/1.75);
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -33,7 +31,7 @@ export const Frame = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  width: 1176px;
+  width: 100%;
   height: 58px;
   display: flex;
   align-items: center;
@@ -43,11 +41,10 @@ export const TitleContainer = styled.div`
 `;
 
 export const MainContainer = styled.div`
-  width: 1176px;
+  width: 100%;
   height: 484px;
   display: flex;
   align-items: center;
-  flex-direction: row;
-  backdrop-filter: blir(20px);
   justify-content: center;
+  backdrop-filter: blur(20px);
 `;
