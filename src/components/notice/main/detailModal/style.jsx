@@ -111,21 +111,6 @@ export const ContentInputWrapper = styled.div`
   margin-top: 0px;
 `;
 
-// export const Placeholder = styled.span`
-//   position: absolute;
-//   height: 14px;
-//   left: 0%;
-//   right: 94.48%;
-//   top: calc(50% - 14px/2 - 4.75px);
-//   font-family: 'Roboto';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 12px;
-//   line-height: 14px;
-//   letter-spacing: -0.0373333px;
-//   color: #747789;
-//   pointer-events: none;
-// `;
 
 export const Input = styled.input`
   width: 100%;

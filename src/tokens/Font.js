@@ -1,4 +1,11 @@
 export const Fonts = {
+  'font-regular-12': {
+    fontSize: '12px',
+    fontFamily: 'SF Pro Text',
+    fontWeight: '500',
+    lineHeight: '20px',
+    color: '#4A4A4A',
+  },
   'font-regular-14': {
     fontSize: '14px',
     fontFamily: 'SF Pro Text',
