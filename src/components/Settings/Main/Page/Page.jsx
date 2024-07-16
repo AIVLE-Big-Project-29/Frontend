@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import * as EM1 from './styled/Empty_style1';
 import * as EM2 from './styled/Empty_style2';
 import * as SC from './styled/Profile_style';
@@ -10,28 +10,53 @@ import * as SC5 from './styled/Section5_style';
 import * as SC6 from './styled/Section6_style';
 import Logout from '../../../logout/Logout';
 
-import img2 from '../../../../assets/images/._..png';
-import img from '../../../../assets/images/Section1.svg';
+import img from '../../../../assets/images/Section1.svg'; // 기본 아이콘 이미지 경로
 
 const Page = () => {
-  const handleLogoutClick = () => {
-    // 로그아웃 버튼 클릭 시 실행할 동작들
-    console.log('로그아웃 버튼 클릭');
-    // 여기서 원하는 추가적인 동작을 수행할 수도 있습니다.
+  const [profileImage, setProfileImage] = useState(''); // 프로필 이미지 상태
+  const fileInputRef = useRef(null); // 파일 입력을 위한 ref
 
-    // Logout 컴포넌트의 handleLogout 함수 호출
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result); // 읽은 이미지를 상태에 저장
+      };
+      reader.readAsDataURL(file); // 파일을 Data URL로 읽기
+    }
+  };
+
+  const handleProfileImageClick = () => {
+    fileInputRef.current.click(); // 프로필 이미지를 클릭했을 때 파일 입력 클릭
+  };
+
+  const handleLogoutClick = () => {
+    console.log('로그아웃 버튼 클릭');
     Logout.handleLogout();
   };
 
   return (
     <SC.Page>
       <SC.Profile>
-        <SC.ProfileImage src={img2} alt="TH" />
+        <SC.ProfileImage
+          src={profileImage || img} // 기본 이미지와 선택한 이미지
+          alt="Profile"
+          onClick={handleProfileImageClick} // 이미지 클릭 시 파일 선택
+        />
         <div>
           <SC.ProfileText>김태희</SC.ProfileText>
           <SC.ProfileEmail>kim1998@naver.com</SC.ProfileEmail>
         </div>
       </SC.Profile>
+
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInputRef} // ref 연결
+        style={{ display: 'none' }} // 파일 입력 숨김
+        onChange={handleImageChange}
+      />
 
       <SC1.Section1>
         <SC1.SectionTitle1>Name</SC1.SectionTitle1>
@@ -41,7 +66,7 @@ const Page = () => {
       </SC1.Section1>
 
       <EM1.EmptySection1>
-        <EM1.Line/>
+        <EM1.Line />
       </EM1.EmptySection1>
 
       <SC2.Section2>
@@ -64,7 +89,7 @@ const Page = () => {
       </SC4.Section4>
 
       <EM2.EmptySection2>
-        <EM2.Line/>
+        <EM2.Line />
       </EM2.EmptySection2>
 
       <SC5.Section5>
@@ -78,7 +103,6 @@ const Page = () => {
         <SC6.SectionContent6>Permanently delete the account and remove access from all devices.</SC6.SectionContent6>
         <SC6.IconButton src={img} alt="Icon" />
       </SC6.Section6>
-
     </SC.Page>
   );
 };
