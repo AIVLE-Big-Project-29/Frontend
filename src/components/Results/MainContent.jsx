@@ -11,14 +11,9 @@ const Results = () => {
         <Sidebar />
       </SC.SidebarContainer>
       <SC.MainContent id="capture">
-        {/* <DataRequirementContent /> */}
+        <DataRequirementContent />
         <SC.MapContainer>
           <SC.Map dangerouslySetInnerHTML={IframeMap()}></SC.Map>
-          {/* <SC.CaptureBtn>
-            <SC.CaptureBtnInner>
-              <SC.CaptureBtnText>Capture</SC.CaptureBtnText>
-            </SC.CaptureBtnInner>
-          </SC.CaptureBtn> */}
         </SC.MapContainer>
         <SC.UploadContainer>
           <ImageUpload />
