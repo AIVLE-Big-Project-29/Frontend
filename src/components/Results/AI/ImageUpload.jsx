@@ -1,32 +1,34 @@
 import { useState } from 'react';
 import axios from 'axios'; // axios를 임포트합니다.
 import * as SC from './style';
-import FileUpload from './Fileupload';
+import UploadForm from './UploadForm';
 
-const Footer = () => {
+const ImageUpload = () => {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
+  const allowedTypes = ['image/jpeg', 'image/png']; // 허용되는 이미지 파일 유형
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    if (selectedFile && selectedFile.type === 'text/csv') {
+
+    if (selectedFile && allowedTypes.includes(selectedFile.type)) {
       console.log('Selected file:', selectedFile);
       setFile(selectedFile);
       setError(''); // 파일이 올바른 경우 오류 메시지를 초기화합니다.
     } else {
-      alert('CSV 파일만 업로드할 수 있습니다.');
+      alert('JPEG, PNG 파일만 업로드할 수 있습니다.');
     }
   };
 
   const handleDrop = (event) => {
     event.preventDefault();
     const droppedFile = event.dataTransfer.files[0];
-    if (droppedFile && droppedFile.type === 'text/csv') {
+    if (droppedFile && allowedTypes.includes(droppedFile.type)) {
       console.log('Dropped file:', droppedFile);
       setFile(droppedFile);
       setError(''); // 파일이 올바른 경우 오류 메시지를 초기화합니다.
     } else {
-      alert('CSV 파일만 업로드할 수 있습니다.');
+      alert('JPEG, PNG 파일만 업로드할 수 있습니다.');
     }
   };
 
@@ -42,7 +44,7 @@ const Footer = () => {
 
   const handleSubmit = async () => {
     if (!file) {
-      alert('업로드할 CSV 파일이 없습니다.');
+      alert('업로드할 파일이 없습니다.');
       return;
     }
 
@@ -52,7 +54,7 @@ const Footer = () => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://192.168.0.6:8000/upload_csv/', // 서버의 파일 업로드 수정은 여기서!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        url: 'http://192.168.0.6:8000/upload_csv/', // 서버의 파일 업로드 수정은 여기서
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -72,14 +74,18 @@ const Footer = () => {
       <div>
         <SC.FileInputLabel>
           파일 선택
-          <SC.FileInput type="file" onChange={handleFileChange} accept=".csv" />
+          <SC.FileInput
+            type="file"
+            onChange={handleFileChange}
+            accept=".jpg, .png"
+          />
         </SC.FileInputLabel>
         <SC.SubmitFileButton onClick={handleSubmit}>
           파일 보내기
         </SC.SubmitFileButton>
       </div>
       <div className="App">
-        <FileUpload
+        <UploadForm
           file={file}
           handleDrop={handleDrop}
           handleDragOver={handleDragOver}
@@ -92,4 +98,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default ImageUpload;

@@ -10,8 +10,7 @@ export const OuterContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 90%; /* % 단위로 설정 */
-  max-width: 1440px; /* 최대 너비 설정 */
+  width: 90%;
   height: 700px;
   background-color: #ffffff;
   border-radius: 24px;

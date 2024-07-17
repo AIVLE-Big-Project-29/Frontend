@@ -18,12 +18,14 @@ export const SidebarContainer = styled.div`
   gap: 4px;
   width: 224px;
   height: 484px;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), rgba(255, 255, 255, 0.8);
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+    ),
+    rgba(255, 255, 255, 0.8);
   flex: none;
   order: 0;
   align-self: stretch;
   flex-grow: 0;
 `;
-
-
-

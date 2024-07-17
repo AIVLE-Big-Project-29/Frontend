@@ -1,8 +1,8 @@
 import * as SC from './style';
-import fileIcon from '../../../../../assets/images/파일아이콘.png';
-import cancelIcon from '../../../../../assets/images/x.svg';
+import fileIcon from '../../../assets/images/fileIcon.png';
+import cancelIcon from '../../../assets/images/x.svg';
 
-const FileUpload = ({ file, handleDrop, handleDragOver, handleCancel }) => {
+const UploadForm = ({ file, handleDrop, handleDragOver, handleCancel }) => {
   return (
     <SC.UploadContainer>
       <SC.DragDropArea onDrop={handleDrop} onDragOver={handleDragOver}>
@@ -22,4 +22,4 @@ const FileUpload = ({ file, handleDrop, handleDragOver, handleCancel }) => {
   );
 };
 
-export default FileUpload;
+export default UploadForm;
