@@ -10,7 +10,8 @@ export const OuterContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 1440px;
+  width: 90%; /* % 단위로 설정 */
+  max-width: 1440px; /* 최대 너비 설정 */
   height: 700px;
   background-color: #ffffff;
   border-radius: 24px;
@@ -21,13 +22,14 @@ export const Container = styled.div`
 `;
 
 export const Frame = styled.div`
-  width: 1176px;
+  width: 100%; /* 100%로 설정하여 유연하게 변화 */
+  max-width: 1176px; /* 최대 너비 설정 */
   height: 570px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: relative;
-  background-color: white; // 선택적: 배경색 설정
+  background-color: white; /* 선택적: 배경색 설정 */
 `;
 
 export const TitleContainer = styled.div`

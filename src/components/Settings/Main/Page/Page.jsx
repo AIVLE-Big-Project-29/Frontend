@@ -8,12 +8,14 @@ import * as SC3 from './styled/Section3_style';
 import * as SC4 from './styled/Section4_style';
 import * as SC5 from './styled/Section5_style';
 import * as SC6 from './styled/Section6_style';
-import Logout from '../../../logout/Logout';
+import { handleLogout } from '../../../logout/Logout'; // 로그아웃 함수 가져오기
+import ChangePasswordModal from './ChangePassword';
 
 import img from '../../../../assets/images/Section1.svg'; // 기본 아이콘 이미지 경로
 
 const Page = () => {
   const [profileImage, setProfileImage] = useState(''); // 프로필 이미지 상태
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태
   const fileInputRef = useRef(null); // 파일 입력을 위한 ref
 
   const handleImageChange = (event) => {
@@ -31,9 +33,12 @@ const Page = () => {
     fileInputRef.current.click(); // 프로필 이미지를 클릭했을 때 파일 입력 클릭
   };
 
-  const handleLogoutClick = () => {
-    console.log('로그아웃 버튼 클릭');
-    Logout.handleLogout();
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -84,16 +89,18 @@ const Page = () => {
         <SC4.SectionSubtitle4>Password</SC4.SectionSubtitle4>
         <SC4.SectionContentWrapper>
           <SC4.PasswordField>Set a permanent password to login to your account.</SC4.PasswordField>
-          <SC4.IconButton src={img} alt="Icon" />
+          <SC4.IconButton src={img} alt="Icon" onClick={openModal} />
         </SC4.SectionContentWrapper>
       </SC4.Section4>
+
+      <ChangePasswordModal isOpen={isModalOpen} onClose={closeModal} /> {/* 모달 추가 */}
 
       <EM2.EmptySection2>
         <EM2.Line />
       </EM2.EmptySection2>
 
       <SC5.Section5>
-        <SC5.SectionTitle5 onClick={handleLogoutClick}>Log out of all devices</SC5.SectionTitle5>
+        <SC5.SectionTitle5 onClick={handleLogout}>Log out of all devices</SC5.SectionTitle5>
         <SC5.SectionContent5>Log out of all other active sessions on other devices besides this one.</SC5.SectionContent5>
         <SC5.IconButton src={img} alt="Icon" />
       </SC5.Section5>
@@ -101,7 +108,6 @@ const Page = () => {
       <SC6.Section6>
         <SC6.SectionTitle6>Delete my account</SC6.SectionTitle6>
         <SC6.SectionContent6>Permanently delete the account and remove access from all devices.</SC6.SectionContent6>
-        <SC6.IconButton src={img} alt="Icon" />
       </SC6.Section6>
     </SC.Page>
   );

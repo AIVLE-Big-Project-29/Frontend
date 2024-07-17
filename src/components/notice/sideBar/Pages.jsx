@@ -2,7 +2,7 @@ import * as SC from './style';
 
 import arrow from '../../../assets/images/arrow.svg';
 import book from '../../../assets/images/book.svg';
-import analysis from '../../../assets/images/analysis.svg';
+import analysis from '../../../assets/images/notice.svg';
 import MenuIconText from './MenuIconText';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ const Pages = () => {
     if (txt === 'main') {
       navigate('/main');
     } else if (txt === 'analysis') {
-      navigate('/results');
+      navigate('/notice');
     }
   };
 
@@ -35,7 +35,7 @@ const Pages = () => {
             <SC.ArrowIcon src={arrow} alt="화살 아이콘" />
           </SC.PreIcon>
         </SC.PreIconWrapper> */}
-        <MenuIconText src={analysis} txt={'Analysis'} />
+        <MenuIconText src={analysis} txt={'Notice'} />
       </SC.Menues>
     </SC.PageMenu>
   );
