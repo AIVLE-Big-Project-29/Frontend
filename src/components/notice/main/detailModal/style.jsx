@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Fonts } from '../../../../tokens/Font';
 
-export const ModalContainer = styled.div`
+export const DetailModalContainer = styled.div`
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
   position: fixed;
   z-index: 1;
@@ -15,7 +15,8 @@ export const ModalContainer = styled.div`
 
 `;
 
-export const ModalContent = styled.div`
+
+export const DetailModalContent = styled.div`
   position: relative;
   background-color: #fefefe;
   margin: 15% auto;
@@ -26,7 +27,7 @@ export const ModalContent = styled.div`
   border-radius: 5px;
 `;
 
-export const ModalHeader = styled.div`
+export const DetailModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,12 +42,12 @@ export const ModalHeader = styled.div`
   background: rgba(108, 185, 162, 0.7);
 `;
 
-export const TitleText = styled.div`
+export const DetailTitleText = styled.div`
   ${Fonts['font-regular-12']};
   margin: 10px;
 `;
 
-export const CloseButton = styled.span`
+export const DetailCloseButton = styled.span`
   font-size: 28px;
   font-weight: bold;
   &:hover,
@@ -61,18 +62,18 @@ export const CloseButton = styled.span`
 
 `;
 
-export const ModalBody = styled.div`
+export const DetailModalBody = styled.div`
   padding: 2px 16px;
   height: 365px;
 `;
 
-export const ModalFooter = styled.div`
+export const DetailModalFooter = styled.div`
   padding: 2px 16px;
   display: flex;
   justify-content: flex-end;
 `;
 
-export const SaveButton = styled.button`
+export const DetailDeleteButton = styled.button`
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
@@ -97,39 +98,42 @@ export const SaveButton = styled.button`
 
 `;
 
-export const TitleInputWrapper = styled.div`
+export const DetailModifyButton = styled.button`
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  // &:hover {
+  //   background-color: #375739;
+  // }
+  // justify-content: flex-start;
+
+  // display: flex;
+  // align-items: center;
+  padding: 0px 10px 0px 15px;
+
+  width: 84px;
+  height: 28px;
+  left: 0px;
+  top: 0px;
+
+  background: #375739;
+  border-radius: 200px;
+
+`;
+
+export const DetailTitleWrapper = styled.div`
   position: relative;
   padding-top: 10px;
   width: 100%;
   height: 35px;
 `;
 
-export const ContentInputWrapper = styled.div`
+export const DetailContentWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 75%;
   margin-top: 0px;
 `;
 
-
-export const Input = styled.input`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #F3F5F6;
-  padding: 5px;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  color: #747789;
-`;
-
-export const Textarea = styled.textarea`
-  width: 100%;
-  height: 100%;
-  border: 1px solid #F3F5F6;
-  padding: 5px;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  color: #747789;
-`;

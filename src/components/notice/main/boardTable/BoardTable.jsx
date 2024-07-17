@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 
 import * as SC from './style';
 
+import DetailModal from '../detailModal/DetailModal';
+
 const posts = [
   {
     id: 1,
@@ -33,6 +35,11 @@ const BoardTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
+  // 추가
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+
+
   // 현재 페이지에 해당하는 게시물 목록 가져오기
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -55,6 +62,21 @@ const BoardTable = () => {
     // posts 상태를 업데이트
     console.log(updatedPosts);
   };
+
+
+  // 추가
+  const handlePostTitleClick = (post) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+  };
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedPost(null);
+  };
+
+
+
+
 
   return (
     <>
@@ -80,7 +102,7 @@ const BoardTable = () => {
                   />
                 </SC.Td>
                 <SC.Td>{index + 1 + (currentPage - 1) * postsPerPage}</SC.Td>
-                <SC.Td>{post.title}</SC.Td>
+                <SC.Td onClick={() => handlePostTitleClick(post)}>{post.title}</SC.Td>
                 <SC.Td>{post.date}</SC.Td>
                 <SC.Td>{post.name}</SC.Td>
               </SC.Tr>
@@ -99,6 +121,9 @@ const BoardTable = () => {
           </SC.PageNumber>
         ))}
       </SC.Pagination>
+      {isModalOpen && (
+        <DetailModal selectedPost={selectedPost} onClose={handleModalClose} />
+      )}
     </>
   );
 };

@@ -1,20 +1,26 @@
 import React from 'react';
+import * as SC from './style';
 
-const DetailModal = ({ isOpen, onClose, data }) => {
-  if (!isOpen) return null;
+const DetailModal = ({ openDetail, closeDetail, selectedPost }) => {
+  if (!openDetail || !selectedPost) return null;
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close-button" onClick={onClose}>
-          &times;
-        </span>
-        <h2>{data.title}</h2>
-        <p>{data.description}</p>
-        <p>Price: {data.price}</p>
-        <button>Add to Cart</button>
-      </div>
-    </div>
+    <SC.DetailModalContainer>
+      <SC.DetailModalContent>
+        <SC.DetailModalHeader>
+          <SC.DetailTitleText></SC.DetailTitleText>
+          <SC.DetailCloseButton onClick={closeDetail}>&times;</SC.DetailCloseButton>
+        </SC.DetailModalHeader>
+        <SC.DetailModalBody>
+          <SC.DetailTitleWrapper>
+            <p>{selectedPost.title}</p>
+          </SC.DetailTitleWrapper>
+          <SC.DetailContentWrapper>
+            <p>{selectedPost.content}</p>
+          </SC.DetailContentWrapper>
+        </SC.DetailModalBody>
+      </SC.DetailModalContent>
+    </SC.DetailModalContainer>
   );
 };
 
