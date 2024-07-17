@@ -1,8 +1,16 @@
 import * as SC from './style';
 
+import Pages from '../../../notice/sideBar/Pages';
+import Profile from '../../../notice/sideBar/Profile';
+
 const Frame1 = () => {
   return (
-    <SC.Frame1Container>{/* Frame1은 빈 칸으로 둡니다 */}</SC.Frame1Container>
+    <SC.Frame1Container>
+      <SC.SideBar>
+        <Profile />
+        <Pages />
+      </SC.SideBar>
+    </SC.Frame1Container>
   );
 };
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import * as SC from '../InnerBlock/styled';
-import logo from '../../../assets/images/logo.svg';
+import logo from '../../../assets/images/GreenCity.png';
 import line from '../../../assets/images/Line.svg';
 import InputId from './InputId';
 import ErrorPage from '../../ErrorPage';

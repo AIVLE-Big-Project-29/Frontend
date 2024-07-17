@@ -6,7 +6,7 @@ export const InnerFrame = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0px;
-  gap: 28px;
+  gap: 24px;
   width: 313px;
   height: 448px;
   border: none;
@@ -18,11 +18,14 @@ export const InnerFrame = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 230px;
+  height: 180px;
 `;
 
-export const LogoImg = styled.img``;
+export const LogoImg = styled.img`
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+`;
 
 export const TextWrapper = styled.div`
   display: flex;

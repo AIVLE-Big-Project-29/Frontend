@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import * as SC from './styled';
 import InputIdPw from './InputIdPw';
-import logo from '../../../assets/images/logo.svg';
+import logo from '../../../assets/images/GreenCity.png';
 import line from '../../../assets/images/Line.svg';
 import UnderBar from './UnderBar';
 import ErrorPage from '../../ErrorPage';

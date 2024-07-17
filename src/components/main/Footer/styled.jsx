@@ -5,42 +5,36 @@ import '../../../tokens/font.css';
 export const FooterContainer = styled.div`
   // footer 전체
   position: relative;
-  width: 1440px;
+  width: 100vw;
   height: 176px;
   background: #213f36;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  gap: 100px;
 `;
 
 export const SiteLogo = styled.div`
   // 로고
-  position: absolute;
-  width: 140px;
-  height: 26px;
-  left: 149px;
-  top: 75px;
-
+  width: 130px;
+  height: 130px;
   padding: 0px;
   gap: 10px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
 export const LogoContainer = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 130px;
+  height: 130px;
 `;
 
-export const LogoTEXT = styled.p`
-  width: 86px;
-  height: 26px;
-
-  ${Fonts['font-semibold-24']}
-  color: #ffffff;
+export const Logo = styled.img`
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  border-radius: 30px;
 `;
 
 export const Menu = styled.div`
@@ -50,12 +44,8 @@ export const Menu = styled.div`
   align-items: flex-start;
   padding: 0px;
   gap: 40px;
-
-  position: absolute;
   width: 400px;
   height: 20px;
-  left: 518px;
-  top: 79px;
 `;
 
 export const MenuText = styled.p`
@@ -73,11 +63,8 @@ export const MenuText = styled.p`
 `;
 
 export const Contact = styled.div`
-  position: absolute;
   width: 234px;
   height: 130px;
-  left: 1088px;
-  top: 32px;
 `;
 
 export const ContactText = styled.p`

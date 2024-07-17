@@ -32,6 +32,26 @@ export const SidebarContent = styled.button`
   display: flex;
   align-items: center;
   ${Fonts['font-regular-14']};
+
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #355342;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+  }
+  &:hover::after {
+    width: 50%;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
 `;
 
 export const Button = styled.p`

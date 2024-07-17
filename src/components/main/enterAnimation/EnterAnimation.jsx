@@ -20,22 +20,22 @@ const EnterAnimation = () => {
       duration: 2,
     });
     gsap.to(wrap.current, {
-      y: -780,
+      y: -970,
       delay: 2.3,
       duration: 1.5,
     });
     gsap.to(slider1.current, {
-      y: -780,
+      y: -970,
       delay: 2.3,
       duration: 1.5,
     });
     gsap.to(slider2.current, {
-      y: -780,
+      y: -970,
       delay: 2.4,
       duration: 1.5,
     });
     gsap.to(slider3.current, {
-      y: -780,
+      y: -970,
       delay: 2.45,
       duration: 1.5,
     });

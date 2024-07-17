@@ -25,20 +25,22 @@ export const ContentWrapper = styled.div`
 
 export const Header = styled.div`
   width: 250px;
-  padding: 40px 5px;
+  padding: 25px 5px;
   background-color: #ffffff;
   text-align: center;
   ${Fonts['font-regular-20']};
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
+  gap: 12px;
 `;
 
 export const Main = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 400px;
-  padding: 20px;
+  padding: 0px;
   background-color: #ffffff; /* Main 배경색 설정 */
   border-radius: 8px;
   flex: 1; /* Main이 Content의 나머지 공간을 차지하도록 설정 */
@@ -75,11 +77,12 @@ export const IconTitle = styled.p`
 `;
 
 export const IconImage1 = styled.img`
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
+  margin-left: -60px;
 `;
 
 export const IconImage2 = styled.img`
@@ -107,4 +110,5 @@ export const SectionTitle = styled.h2`
   top: -1%;
   right: -1%;
   ${Fonts['font-regular-18']};
+  white-space: nowrap;
 `;
