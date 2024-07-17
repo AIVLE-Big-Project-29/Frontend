@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import * as SC from './style';
-
-import DetailModal from '../detailModal/DetailModal';
+import DetailModal from '../detailModal/DetailModal'; // DetailModal import 추가
 
 const posts = [
   {
@@ -34,11 +32,8 @@ const posts = [
 const BoardTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-
-  // 추가
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
-
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false); // 디테일 모달 오픈 상태 관리
+  const [selectedPost, setSelectedPost] = useState(null); // 선택된 포스트 상태 관리
 
   // 현재 페이지에 해당하는 게시물 목록 가져오기
   const indexOfLastPost = currentPage * postsPerPage;
@@ -51,32 +46,25 @@ const BoardTable = () => {
     pageNumbers.push(i);
   }
 
+  // 포스트 클릭 핸들러
+  const handlePostClick = (post) => {
+    setSelectedPost(post);
+    setIsDetailModalOpen(true);
+    console.log("Post clicked:", post); // 디버깅을 위해 로그 추가
+  };
+
   // 체크박스 변경 핸들러
   const handleCheckBoxChange = (id) => {
-    const updatedPosts = posts.map((post) => {
-      if (post.id === id) {
-        return { ...post, checked: !post.checked };
-      }
-      return post;
-    });
-    // posts 상태를 업데이트
+    const updatedPosts = posts.map((post) =>
+      post.id === id ? { ...post, checked: !post.checked } : post
+    );
     console.log(updatedPosts);
   };
 
-
-  // 추가
-  const handlePostTitleClick = (post) => {
-    setSelectedPost(post);
-    setIsModalOpen(true);
+  // 페이지 변경 핸들러
+  const handlePageChange = (number) => {
+    setCurrentPage(number);
   };
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setSelectedPost(null);
-  };
-
-
-
-
 
   return (
     <>
@@ -97,12 +85,13 @@ const BoardTable = () => {
                 <SC.Td>
                   <input
                     type="checkbox"
-                    // checked={post.checked}
                     onChange={() => handleCheckBoxChange(post.id)}
                   />
                 </SC.Td>
-                <SC.Td>{index + 1 + (currentPage - 1) * postsPerPage}</SC.Td>
-                <SC.Td onClick={() => handlePostTitleClick(post)}>{post.title}</SC.Td>
+                <SC.Td>
+                  {index + 1 + (currentPage - 1) * postsPerPage}
+                </SC.Td>
+                <SC.Td onClick={() => handlePostClick(post)}>{post.title}</SC.Td>
                 <SC.Td>{post.date}</SC.Td>
                 <SC.Td>{post.name}</SC.Td>
               </SC.Tr>
@@ -114,16 +103,20 @@ const BoardTable = () => {
         {pageNumbers.map((number) => (
           <SC.PageNumber
             key={number}
-            onClick={() => setCurrentPage(number)}
+            onClick={() => handlePageChange(number)}
             isActive={number === currentPage}
           >
             {number}
           </SC.PageNumber>
         ))}
       </SC.Pagination>
-      {isModalOpen && (
-        <DetailModal selectedPost={selectedPost} onClose={handleModalClose} />
-      )}
+
+      {/* DetailModal 추가 */}
+      <DetailModal
+        isOpen={isDetailModalOpen} // 수정된 prop 이름
+        closeModal={() => setIsDetailModalOpen(false)}
+        selectedPost={selectedPost}
+      />
     </>
   );
 };

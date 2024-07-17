@@ -67,11 +67,13 @@ export const DetailModalBody = styled.div`
   height: 365px;
 `;
 
+/*
 export const DetailModalFooter = styled.div`
   padding: 2px 16px;
   display: flex;
   justify-content: flex-end;
 `;
+*/
 
 export const DetailDeleteButton = styled.button`
   background-color: #4CAF50;
@@ -124,16 +126,43 @@ export const DetailModifyButton = styled.button`
 `;
 
 export const DetailTitleWrapper = styled.div`
+  ${Fonts['font-regular-16']};
   position: relative;
   padding-top: 10px;
   width: 100%;
   height: 35px;
+  padding: 1px; // 패딩 추가
+  // border-radius: 3px; // 모서리 둥글게
+  // border: 1px solid #999;
+  margin-bottom: 10px;
 `;
 
 export const DetailContentWrapper = styled.div`
+  ${Fonts['font-regular-12']};
   position: relative;
   width: 100%;
   height: 75%;
   margin-top: 0px;
+  padding: 1px; // 패딩 추가
+  // border-radius: 3px; // 모서리 둥글게
+  // border: 1px solid #999;
 `;
 
+export const Th = styled.th`
+  // box-sizing: border-box;
+  // padding: 8px 12px;
+  gap: 4px;
+  /* width: 214.5px;
+  min-width: 80px;
+  max-width: 220px; */
+  height: 5px;
+  min-height: 40px;
+  border-top: 1px solid rgba(28, 28, 28, 0.2);
+  border-bottom: 1px solid rgba(28, 28, 28, 0.2);
+  border-radius: 0px;
+  ${Fonts['font-regular-12']}
+  color: rgba(28, 28, 28, 0.4);
+  text-align: justify;
+  accent-color: black;
+  width: 86.8%;
+`;
