@@ -44,6 +44,7 @@ export const Td = styled.td`
   border-bottom: 1px solid rgba(28, 28, 28, 0.05);
   ${Fonts['font-regular-14']}
   color: #1C1C1C;
+  cursor: pointer;
 `;
 
 export const Pagination = styled.div`
