@@ -1,17 +1,35 @@
 import * as SC from './style';
 
-import Pages from '../../../notice/sideBar/Pages';
-import Profile from '../../../notice/sideBar/Profile';
+import Profile from './Profile';
+import book from '../../../../assets/images/book.svg';
+import notice from '../../../../assets/images/notice.svg';
+import MenuIconText from '../../../notice/sideBar/MenuIconText';
+import { useNavigate } from 'react-router-dom';
 
-const Frame1 = () => {
+const Pages = () => {
+  const navigate = useNavigate();
+  const clickHandler = (txt) => {
+    if (txt === 'main') {
+      navigate('/main');
+    } else if (txt === 'notice') {
+      navigate('/notice');
+    }
+  };
+
   return (
-    <SC.Frame1Container>
-      <SC.SideBar>
-        <Profile />
-        <Pages />
-      </SC.SideBar>
-    </SC.Frame1Container>
+    <SC.PageMenu>
+      <Profile/>
+      <SC.MenuTitle>
+        <SC.Title>Pages</SC.Title>
+      </SC.MenuTitle>
+      <SC.Menues onClick={() => clickHandler('main')}>
+        <MenuIconText src={book} txt={'Home'} />
+      </SC.Menues>
+      <SC.Menues onClick={() => clickHandler('notice')}>
+        <MenuIconText src={notice} txt={'Notice'} />
+      </SC.Menues>
+    </SC.PageMenu>
   );
 };
 
-export default Frame1;
+export default Pages;
