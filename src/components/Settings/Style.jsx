@@ -10,7 +10,7 @@ export const OuterContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 1440px;
+  width: 90%;
   height: 700px;
   background-color: #ffffff;
   border-radius: 24px;
