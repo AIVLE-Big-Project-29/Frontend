@@ -64,7 +64,7 @@ const Modal = ({ isOpen, closeModal }) => {
           </SC.ContentInputWrapper>
         </SC.ModalBody>
         <SC.ModalFooter>
-          <SC.SaveButton onClick={closeModal}>Save</SC.SaveButton>
+          <SC.SaveButton onClick={handleSave}>Save</SC.SaveButton>
         </SC.ModalFooter>
       </SC.ModalContent>
     </SC.ModalContainer>
