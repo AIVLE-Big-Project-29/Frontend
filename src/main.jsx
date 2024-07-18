@@ -15,6 +15,7 @@ import Results from './components/Results/MainContent.jsx';
 import Notice from './components/notice/Notice.jsx';
 import EmailAuth from './components/login/email/EmailAuth.jsx';
 import Settings from './components/Settings/Frame.jsx';
+import Agreement from './components/login/signUp/AgreementPage.jsx';
 
 // 루트 경로 설정
 const router = createBrowserRouter([
@@ -62,6 +63,12 @@ const router = createBrowserRouter([
       {
         path: '/settings',
         element: <Settings />,
+        errorElement: <ErrorPage />,
+        children: [],
+      },
+      {
+        path: '/agreement',
+        element: <Agreement />,
         errorElement: <ErrorPage />,
         children: [],
       },
