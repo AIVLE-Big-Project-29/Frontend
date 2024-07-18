@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as SC from './style';
+import axios from 'axios';
 
 const Modal = ({ isOpen, closeModal }) => {
   const [title, setTitle] = useState('');
@@ -36,7 +37,7 @@ const Modal = ({ isOpen, closeModal }) => {
     <SC.ModalContainer isOpen={isOpen}>
       <SC.ModalContent>
         <SC.ModalHeader>
-        <SC.TitleText>새 글</SC.TitleText>
+          <SC.TitleText>새 글</SC.TitleText>
           <SC.CloseButton onClick={handleCloseModal}>&times;</SC.CloseButton>
         </SC.ModalHeader>
         <SC.ModalBody>
@@ -63,7 +64,7 @@ const Modal = ({ isOpen, closeModal }) => {
           </SC.ContentInputWrapper>
         </SC.ModalBody>
         <SC.ModalFooter>
-          <SC.SaveButton onClick={closeModal}>Save</SC.SaveButton>
+          <SC.SaveButton onClick={handleSave}>Save</SC.SaveButton>
         </SC.ModalFooter>
       </SC.ModalContent>
     </SC.ModalContainer>
