@@ -47,6 +47,7 @@ export const SignInText = styled.p`
   ${Fonts['font-semibold-24']}
   color: #355342;
   font-weight: 700;
+  white-space: nowrap;
 `;
 
 export const Partition = styled.div`
@@ -165,7 +166,9 @@ export const UnderBarSign = styled.p`
   height: 20px;
   ${Fonts['font-regular-14']}
   color: #355342;
+  cursor: pointer;  /* 커서 추가 */
 `;
+
 
 export const UnderBarForgot = styled.p`
   /* Forgot Password */

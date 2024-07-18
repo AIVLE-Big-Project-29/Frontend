@@ -45,6 +45,7 @@ export const SignInBtn = styled.button`
 
   background: linear-gradient(0deg, #375739, #375739), #1c1c1c;
   border-radius: 8px;
+  white-space: nowrap;
 `;
 
 export const SignUpBtn = styled.button`
@@ -60,6 +61,7 @@ export const SignUpBtn = styled.button`
 
   background: rgba(28, 28, 28, 0.05);
   border-radius: 8px;
+  white-space: nowrap;
 `;
 
 export const SignUp = styled.div`
