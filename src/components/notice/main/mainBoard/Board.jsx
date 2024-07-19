@@ -4,11 +4,15 @@ import add from '../../../../assets/images/add.svg';
 import BoardTable from '../boardTable/BoardTable';
 import Modal from '../write/Modal';
 
-const Board = () => {
+const Board = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const controlModel = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
+  // const openModal = () => setIsModalOpen(true);
+  // const closeModal = () => setIsModalOpen(false);
 
   const handleSave = async () => {
     try {
@@ -34,15 +38,15 @@ const Board = () => {
     <SC.MainBoard>
       <SC.BoardHeader>
         <SC.HeaderGroup>
-          <SC.HeaderBtn onClick={openModal}>
+          <SC.HeaderBtn onClick={controlModel}>
             <SC.BtnIconContainer>
               <SC.HeaderIcon src={add} alt="add 아이콘" />
             </SC.BtnIconContainer>
           </SC.HeaderBtn>
         </SC.HeaderGroup>
       </SC.BoardHeader>
-      <BoardTable />
-      <Modal isOpen={handleSave} closeModal={closeModal} />
+      <BoardTable data={data}/>
+      {isModalOpen && <Modal isOpen={handleSave} closeModal={controlModel} />}
     </SC.MainBoard>
   );
 };

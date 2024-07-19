@@ -55,7 +55,7 @@ export const Pagination = styled.div`
 
 export const PageNumber = styled.button`
   background-color: ${(props) =>
-    props.isActive ? 'rgba(28, 28, 28, 0.05);' : '#fff'};
+    props.isactive ? 'rgba(28, 28, 28, 0.05);' : '#fff'};
   color: black;
   padding: 4px 8px;
   gap: 4px;
