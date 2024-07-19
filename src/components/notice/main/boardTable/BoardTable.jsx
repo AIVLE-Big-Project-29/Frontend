@@ -20,14 +20,19 @@ const BoardTable = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get('http://172.30.1.84:8000/notice/board/list/');
+        const response = await axios.get(
+          'http://172.30.1.84:8000/notice/board/list/'
+        );
         console.log('Server response:', response.data);
 
         setPosts(response.data);
 
         const indexOfLastPost = currentPage * postsPerPage;
         const indexOfFirstPost = indexOfLastPost - postsPerPage;
-        const currentPosts = response.data.slice(indexOfFirstPost, indexOfLastPost);
+        const currentPosts = response.data.slice(
+          indexOfFirstPost,
+          indexOfLastPost
+        );
         setSlicedPosts(currentPosts);
       } catch (error) {
         console.error('Error inquire post:', error);
@@ -63,7 +68,9 @@ const BoardTable = () => {
       try {
         console.log('삭제 실행');
 
-        const response = await axios.delete(`http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`);
+        const response = await axios.delete(
+          `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`
+        );
         console.log(response);
         if (response.status === 204) {
           console.log('삭제 완료', response.data);
@@ -83,7 +90,7 @@ const BoardTable = () => {
 
   //     const response = await axios({
   //       method: 'PUT',
-  //       url: `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`,        
+  //       url: `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`,
   //       data: {
   //         title: response.title,
   //         content: response.content,
@@ -104,19 +111,29 @@ const BoardTable = () => {
   //   }
   // };
 
-
-
   const handleUpdate = async (title, content) => {
     try {
-
-      const response = await axios.put(`http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`, {
-        title: title,
-        content: content,
-      });
+      const response = await axios.put(
+        `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`,
+        {
+          title: title,
+          content: content,
+        }
+      );
 
       if (response.status === 200) {
         console.log('수정 완료', response.data);
-        setPosts(posts.map((post) => (post.id === selectedPost.id ? { ...post, "title": response.data.title, "content": response.data.content } : post)));
+        setPosts(
+          posts.map((post) =>
+            post.id === selectedPost.id
+              ? {
+                  ...post,
+                  title: response.data.title,
+                  content: response.data.content,
+                }
+              : post
+          )
+        );
         setIsDetailModalOpen(false);
       } else {
         console.error('수정 실패', response.data);
@@ -127,7 +144,6 @@ const BoardTable = () => {
       setError({ ...error, general: '수정 실패.' });
     }
   };
-
 
   return (
     <>
@@ -144,10 +160,10 @@ const BoardTable = () => {
           <tbody>
             {slicedPosts.map((post, index) => (
               <SC.Tr key={post.id}>
-                <SC.Td>
-                  {index + 1 + (currentPage - 1) * postsPerPage}
+                <SC.Td>{index + 1 + (currentPage - 1) * postsPerPage}</SC.Td>
+                <SC.Td onClick={() => handlePostClick(post)}>
+                  {post.title}
                 </SC.Td>
-                <SC.Td onClick={() => handlePostClick(post)}>{post.title}</SC.Td>
                 <SC.Td>{post.created_at}</SC.Td>
                 <SC.Td>{post.username}</SC.Td>
               </SC.Tr>
