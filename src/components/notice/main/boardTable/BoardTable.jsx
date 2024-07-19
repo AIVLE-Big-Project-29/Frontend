@@ -1,42 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as SC from './style';
 import DetailModal from '../detailModal/DetailModal'; // DetailModal import 추가
 import axios from 'axios';
 // import { name } from 'eslint-plugin-prettier';
 
-const posts = [
-  {
-    id: 1,
-    title: '첫 번째 게시물',
-    content: '안녕하세요. 첫 번째 게시물입니다.',
-    name: '홍길동',
-    date: '2023-01-01',
-    checked: false,
-  },
-];
-
-// const posts = async () => {
-//   try {
-//     const response = await axios({
-//       method: 'post',
-//       url: 'http://192.168.103.7:8000/notice/board/', // 실제 서버 URL로 변경
-//       data: {
-//         id,
-//         title,
-//         content,
-//         username,
-//         date,
-//       },
-//     });
-
-//     console.log('Server response:', response.data);
-//   } catch (error) {
-//     console.error('Error inquire post:', error);
-//   }
-// };
 
 
-const BoardTable = () => {
+const BoardTable = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false); // 디테일 모달 오픈 상태 관리
@@ -47,10 +17,40 @@ const BoardTable = () => {
     Pw: '',
     general: '',
   });
-  // 현재 페이지에 해당하는 게시물 목록 가져오기
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const [posts, setPosts] = useState([]);
+  const [slicedPosts, setSlicedPosts] = useState([]);
+
+  // 게시판 글 조회 요청
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await axios({
+          method: 'get',
+          url: 'http://172.30.1.84:8000/notice/board/list/', // 실제 서버 URL로 변경
+          data: {},
+        });
+        
+        console.log('Server response:', response.data);
+  
+        // 게시판 글 데이터 저장
+        setPosts(response.data);
+        console.log(posts);
+
+        // 현재 페이지에 해당하는 게시물 목록 가져오기
+        const indexOfLastPost = currentPage * postsPerPage;
+        const indexOfFirstPost = indexOfLastPost - postsPerPage;
+        const currentPosts = response.data.slice(indexOfFirstPost, indexOfLastPost);
+        setSlicedPosts(currentPosts);
+        console.log(slicedPosts);
+
+      } catch (error) {
+        console.error('Error inquire post:', error);
+      }
+    };
+
+    getPosts();
+  }, [currentPage]);
+
 
   // 페이지 번호 목록 생성
   const pageNumbers = [];
@@ -77,7 +77,7 @@ const BoardTable = () => {
 
       const response = await axios({
         method: 'delete',
-        url: 'http://192.168.103.7:8000/notice/board/',
+        url: 'http://172.30.1.84:8000/notice/board/',
         withCredentials: false,
         data: {
           post: selectedPost.id,
@@ -106,7 +106,7 @@ const BoardTable = () => {
 
       const response = await axios({
         method: 'put',
-        url: 'http://192.168.103.7:8000/notice/board/',
+        url: 'http://172.30.1.84:8000/notice/board/',
         withCredentials: false,
         data: {
           title: selectedPost.title,
@@ -141,14 +141,14 @@ const BoardTable = () => {
             </tr>
           </thead>
           <tbody>
-            {currentPosts.map((post, index) => (
+            {slicedPosts.map((post, index) => (
               <SC.Tr key={post.id}>
                 <SC.Td>
                   {index + 1 + (currentPage - 1) * postsPerPage}
                 </SC.Td>
                 <SC.Td onClick={() => handlePostClick(post)}>{post.title}</SC.Td>
-                <SC.Td>{post.date}</SC.Td>
-                <SC.Td>{post.name}</SC.Td>
+                <SC.Td>{post.created_at}</SC.Td>
+                <SC.Td>{post.username}</SC.Td>
               </SC.Tr>
             ))}
           </tbody>
@@ -159,7 +159,7 @@ const BoardTable = () => {
           <SC.PageNumber
             key={number}
             onClick={() => handlePageChange(number)}
-            isActive={number === currentPage}
+            isactive={number === currentPage ? 'true' : 'false'}
           >
             {number}
           </SC.PageNumber>

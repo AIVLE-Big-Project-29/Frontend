@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import * as SC from './style';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Modal = ({ isOpen, closeModal }) => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [isTitleFocused, setIsTitleFocused] = useState(false);
   const [content, setContent] = useState('');
@@ -18,7 +20,7 @@ const Modal = ({ isOpen, closeModal }) => {
     try {
       const response = await axios({
         method: 'POST',
-        url: 'http://172.30.1.84:8000:8000/notice/board', // 실제 서버 URL로 변경
+        url: 'http://172.30.1.84:8000/notice/board/create/', // 실제 서버 URL로 변경
         data: {
           title: title,
           content: content,
