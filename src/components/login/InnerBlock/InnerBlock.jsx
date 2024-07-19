@@ -84,15 +84,9 @@ const InnerBlock = () => {
         });
         console.log('로그인 성공', response.data);
         // 로그인 성공 후 웹 스토리지에 토큰 저장, 메인 페이지로 이동
-        
-        localStorage.setItem(
-          'accessToken',
-          response.data['access']
-        );
-        localStorage.setItem(
-          'refreshToken',
-          response.data['refresh']
-        );
+
+        localStorage.setItem('accessToken', response.data['access']);
+        localStorage.setItem('refreshToken', response.data['refresh']);
 
         navigate('/main');
       } catch (error) {
