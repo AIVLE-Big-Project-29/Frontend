@@ -75,7 +75,7 @@ const InnerBlock = () => {
         // 입력 오류가 없으면 데이터 전송
         const response = await axios({
           method: 'post',
-          url: 'http://192.168.103.7:8000/user_api/login/',
+          url: 'http://172.30.1.84:8000/user_api/login/',
           withCredentials: false,
           data: {
             username: loginInfo.Id,

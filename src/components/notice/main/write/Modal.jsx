@@ -17,8 +17,8 @@ const Modal = ({ isOpen, closeModal }) => {
   const handleSave = async () => {
     try {
       const response = await axios({
-        method: 'post',
-        url: 'http://192.168.10.59:8000/notices/board', // 실제 서버 URL로 변경
+        method: 'POST',
+        url: 'http://172.30.1.84:8000:8000/notice/board', // 실제 서버 URL로 변경
         data: {
           title: title,
           content: content,

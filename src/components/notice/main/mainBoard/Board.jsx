@@ -14,7 +14,7 @@ const Board = () => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://192.168.103.7:8000/notice/board/', // 실제 서버 URL로 변경
+        url: 'http://172.30.1.84:8000/notice/board/', // 실제 서버 URL로 변경
         data: {
           title: title,
           content: content,
@@ -42,7 +42,7 @@ const Board = () => {
         </SC.HeaderGroup>
       </SC.BoardHeader>
       <BoardTable />
-      <Modal isOpen={isModalOpen} closeModal={closeModal} />
+      <Modal isOpen={handleSave} closeModal={closeModal} />
     </SC.MainBoard>
   );
 };
