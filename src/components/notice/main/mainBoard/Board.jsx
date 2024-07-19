@@ -10,6 +10,26 @@ const Board = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const handleSave = async () => {
+    try {
+      const response = await axios({
+        method: 'post',
+        url: 'http://192.168.103.7:8000/notice/board/', // 실제 서버 URL로 변경
+        data: {
+          title: title,
+          content: content,
+        },
+      });
+
+      console.log('Server response:', response.data);
+      handleCloseModal();
+    } catch (error) {
+      handleCloseModal();
+      console.error('Error saving post:', error);
+    }
+  };
+
+
   return (
     <SC.MainBoard>
       <SC.BoardHeader>

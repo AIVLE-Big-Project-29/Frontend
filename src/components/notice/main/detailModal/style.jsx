@@ -15,7 +15,6 @@ export const DetailModalContainer = styled.div`
 
 `;
 
-
 export const DetailModalContent = styled.div`
   position: relative;
   background-color: #fefefe;
@@ -74,14 +73,10 @@ export const DetailModalFooter = styled.div`
 `;
 
 export const DetailDeleteButton = styled.button`
-  background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  // &:hover {
-  //   background-color: #375739;
-  // }
   // justify-content: flex-start;
 
   // display: flex;
@@ -92,22 +87,34 @@ export const DetailDeleteButton = styled.button`
   height: 28px;
   left: 0px;
   top: 0px;
-
-  background: #375739;
   border-radius: 200px;
-
 `;
 
 export const DetailModifyButton = styled.button`
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  // justify-content: flex-start;
+
+  // display: flex;
+  // align-items: center;
+  padding: 0px 10px 0px 15px;
+
+  width: 84px;
+  height: 28px;
+  left: 0px;
+  top: 0px;
+  border-radius: 200px;
+`;
+
+export const DetailSaveButton = styled.button`
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  // &:hover {
-  //   background-color: #375739;
-  // }
-  // justify-content: flex-start;
+  y-content: flex-start;
 
   // display: flex;
   // align-items: center;
@@ -124,16 +131,66 @@ export const DetailModifyButton = styled.button`
 `;
 
 export const DetailTitleWrapper = styled.div`
+  ${Fonts['font-regular-16']};
   position: relative;
   padding-top: 10px;
   width: 100%;
   height: 35px;
+  padding: 1px; // 패딩 추가
+  // border-radius: 3px; // 모서리 둥글게
+  // border: 1px solid #999;
+  margin-bottom: 10px;
 `;
 
 export const DetailContentWrapper = styled.div`
+  ${Fonts['font-regular-12']};
   position: relative;
   width: 100%;
   height: 75%;
   margin-top: 0px;
+  padding: 1px; // 패딩 추가
+  // border-radius: 3px; // 모서리 둥글게
+  // border: 1px solid #999;
 `;
 
+export const Th = styled.th`
+  // box-sizing: border-box;
+  // padding: 8px 12px;
+  gap: 4px;
+  /* width: 214.5px;
+  min-width: 80px;
+  max-width: 220px; */
+  height: 5px;
+  min-height: 40px;
+  border-top: 1px solid rgba(28, 28, 28, 0.2);
+  border-bottom: 1px solid rgba(28, 28, 28, 0.2);
+  border-radius: 0px;
+  ${Fonts['font-regular-12']}
+  color: rgba(28, 28, 28, 0.4);
+  text-align: justify;
+  accent-color: black;
+  width: 86.8%;
+`;
+
+
+export const TitleArea = styled.input`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #F3F5F6;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #747789;
+`;
+
+export const ContentArea = styled.textarea`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #F3F5F6;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #747789;
+`;
