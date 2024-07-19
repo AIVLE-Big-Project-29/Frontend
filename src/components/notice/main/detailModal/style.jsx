@@ -15,7 +15,6 @@ export const DetailModalContainer = styled.div`
 
 `;
 
-
 export const DetailModalContent = styled.div`
   position: relative;
   background-color: #fefefe;
@@ -67,23 +66,17 @@ export const DetailModalBody = styled.div`
   height: 365px;
 `;
 
-/*
 export const DetailModalFooter = styled.div`
   padding: 2px 16px;
   display: flex;
   justify-content: flex-end;
 `;
-*/
 
 export const DetailDeleteButton = styled.button`
-  background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  // &:hover {
-  //   background-color: #375739;
-  // }
   // justify-content: flex-start;
 
   // display: flex;
@@ -94,22 +87,34 @@ export const DetailDeleteButton = styled.button`
   height: 28px;
   left: 0px;
   top: 0px;
-
-  background: #375739;
   border-radius: 200px;
-
 `;
 
 export const DetailModifyButton = styled.button`
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  // justify-content: flex-start;
+
+  // display: flex;
+  // align-items: center;
+  padding: 0px 10px 0px 15px;
+
+  width: 84px;
+  height: 28px;
+  left: 0px;
+  top: 0px;
+  border-radius: 200px;
+`;
+
+export const DetailSaveButton = styled.button`
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  // &:hover {
-  //   background-color: #375739;
-  // }
-  // justify-content: flex-start;
+  y-content: flex-start;
 
   // display: flex;
   // align-items: center;
@@ -165,4 +170,27 @@ export const Th = styled.th`
   text-align: justify;
   accent-color: black;
   width: 86.8%;
+`;
+
+
+export const TitleArea = styled.input`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #F3F5F6;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #747789;
+`;
+
+export const ContentArea = styled.textarea`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #F3F5F6;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #747789;
 `;
