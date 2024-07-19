@@ -46,7 +46,7 @@ const Page = () => {
       try {
         const accessToken = localStorage.getItem('accessToken');
         if (accessToken) {
-          await axios.delete('http://172.30.1.88:8000/AI/upload/', {
+          await axios.delete('http://172.30.1.84:8000/AI/upload/', {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
