@@ -4,9 +4,15 @@ import dele from '../../../../assets/images/delete.svg';
 import modi from '../../../../assets/images/modify.svg';
 
 const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) => { // prop 이름 수정
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(selectedPost.title);
+  const [editedContent, setEditedContent] = useState(selectedPost.content);
+
   if (!isOpen || !selectedPost) return null;
 
   useEffect(() => {
+    console.log(selectedPost);
+    
     if (isOpen && selectedPost) {
       setEditedTitle(selectedPost.title);
       setEditedContent(selectedPost.content);
@@ -21,9 +27,9 @@ const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) =
     setIsEditMode(false);
   };
 
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(selectedPost.title);
-  const [editedContent, setEditedContent] = useState(selectedPost.content);
+  const editTitleHandler = (event) => {
+    setEditedTitle(event.target.value);
+  };
 
   return (
     <SC.DetailModalContainer isOpen={isOpen}>
@@ -37,7 +43,7 @@ const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) =
             {isEditMode ? (
                 <SC.TitleArea
                   value={editedTitle}
-                  onChange={(e) => setEditedTitle(e.target.value)}
+                  onChange={editTitleHandler}
                 />
             ) : (
                 <p>{selectedPost.title}</p>
