@@ -13,25 +13,6 @@ const Modal = ({ isOpen, closeModal }) => {
     setContent('');
   };
 
-  const handleSave = async () => {
-    try {
-      const response = await axios({
-        method: 'post',
-        url: 'http://192.168.10.59:8000/notice/', // 실제 서버 URL로 변경
-        data: {
-          title: title,
-          content: content,
-        },
-      });
-
-      console.log('Server response:', response.data);
-      handleCloseModal();
-    } catch (error) {
-      handleCloseModal();
-      console.error('Error saving post:', error);
-    }
-  };
-
   return (
     <SC.ModalContainer isOpen={isOpen}>
       <SC.ModalContent>
