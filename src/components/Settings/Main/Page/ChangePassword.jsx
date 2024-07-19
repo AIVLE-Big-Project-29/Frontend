@@ -28,7 +28,7 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
     }
 
     try {
-      const response = await axios.post('http://your-backend-url/change-password', {
+      const response = await axios.post('http://192.168.0.6:8000/change-password/', {
         currentPassword,
         newPassword,
       });
@@ -43,7 +43,7 @@ const ChangePasswordModal = ({ isOpen, onClose }) => {
           setMessage('');
         }, 2000);
       } else {
-        setMessage('Password change failed!');
+        setMessage(response.data.message || 'Password change failed!');
       }
     } catch (error) {
       console.error('Error changing password:', error);

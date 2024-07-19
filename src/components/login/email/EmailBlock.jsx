@@ -24,7 +24,7 @@ const EmailBlock = ({ signUpInfo }) => {
   const emailSendHandler = async () => {
     try {
       const response = await axios.post(
-        'http://192.168.10.59:8000/user_api/verify-email/',
+        'http://192.168.103.7:8000/user_api/verify-email/',
         {
           email: email,
         }
@@ -43,7 +43,7 @@ const EmailBlock = ({ signUpInfo }) => {
 
       const infoResponse = await axios({
         method: 'post',
-        url: 'http://192.168.10.59:8000/user_api/register/',
+        url: 'http://192.168.103.7:8000/user_api/register/',
         withCredentials: false,
         data: {
           username: signUpInfo.Id,

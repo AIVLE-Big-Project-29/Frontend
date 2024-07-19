@@ -12,24 +12,36 @@ const Footer = ({ isUpload }) => {
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
-    if (selectedFile && selectedFile.type === 'text/csv') {
+    if (
+      selectedFile &&
+      (selectedFile.type === 'text/csv' ||
+        selectedFile.type ===
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
+        selectedFile.type === 'application/vnd.ms-excel')
+    ) {
       console.log('Selected file:', selectedFile);
       setFile(selectedFile);
       setError(''); // 파일이 올바른 경우 오류 메시지를 초기화합니다.
     } else {
-      alert('CSV 파일만 업로드할 수 있습니다.');
+      alert('CSV 또는 Excel 파일만 업로드할 수 있습니다.');
     }
   };
 
   const handleDrop = (event) => {
     event.preventDefault();
     const droppedFile = event.dataTransfer.files[0];
-    if (droppedFile && droppedFile.type === 'text/csv') {
+    if (
+      droppedFile &&
+      (droppedFile.type === 'text/csv' ||
+        droppedFile.type ===
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ||
+        droppedFile.type === 'application/vnd.ms-excel')
+    ) {
       console.log('Dropped file:', droppedFile);
       setFile(droppedFile);
       setError(''); // 파일이 올바른 경우 오류 메시지를 초기화합니다.
     } else {
-      alert('CSV 파일만 업로드할 수 있습니다.');
+      alert('CSV 또는 Excel 파일만 업로드할 수 있습니다.');
     }
   };
 
@@ -45,7 +57,7 @@ const Footer = ({ isUpload }) => {
 
   const handleSubmit = async () => {
     if (!file) {
-      alert('업로드할 CSV 파일이 없습니다.');
+      alert('업로드할 파일이 없습니다.');
       return;
     }
 
@@ -78,7 +90,11 @@ const Footer = ({ isUpload }) => {
       <div>
         <SC.FileInputLabel>
           파일 선택
-          <SC.FileInput type="file" onChange={handleFileChange} accept=".csv" />
+          <SC.FileInput
+            type="file"
+            onChange={handleFileChange}
+            accept=".csv, .xlsx, .xls"
+          />
         </SC.FileInputLabel>
         <SC.SubmitFileButton onClick={handleSubmit}>
           파일 보내기
@@ -92,7 +108,7 @@ const Footer = ({ isUpload }) => {
           handleCancel={handleCancel}
         />
       </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {/* 오류 메시지를 표시합니다. */}
     </SC.FooterContainer>
   );

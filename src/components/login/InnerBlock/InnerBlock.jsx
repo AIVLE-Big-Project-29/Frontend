@@ -75,7 +75,7 @@ const InnerBlock = () => {
         // 입력 오류가 없으면 데이터 전송
         const response = await axios({
           method: 'post',
-          url: 'http://192.168.10.59:8000/user_api/login/',
+          url: 'http://192.168.103.7:8000/user_api/login/',
           withCredentials: false,
           data: {
             username: loginInfo.Id,
@@ -84,13 +84,14 @@ const InnerBlock = () => {
         });
         console.log('로그인 성공', response.data);
         // 로그인 성공 후 웹 스토리지에 토큰 저장, 메인 페이지로 이동
+        
         localStorage.setItem(
           'accessToken',
-          response.data.headers['authorization']
+          response.data['access']
         );
         localStorage.setItem(
           'refreshToken',
-          response.data.headers['refresh-token']
+          response.data['refresh']
         );
 
         navigate('/main');
