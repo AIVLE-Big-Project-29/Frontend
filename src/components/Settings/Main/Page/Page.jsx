@@ -41,6 +41,25 @@ const Page = () => {
     setIsModalOpen(false);
   };
 
+  const handleDeleteAccount = async () => {
+    if (window.confirm('정말로 계정을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+      try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+          await axios.delete('http://172.30.1.88:8000/AI/upload/', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        }
+        handleLogout(); // 계정 삭제 후 로그아웃 처리
+      } catch (error) {
+        console.error('계정 삭제 실패', error);
+        alert('계정 삭제에 실패했습니다. 다시 시도해주세요.');
+      }
+    }
+  };
+
   return (
     <SC.Page>
       <SC.Profile>
@@ -106,8 +125,9 @@ const Page = () => {
       </SC5.Section5>
 
       <SC6.Section6>
-        <SC6.SectionTitle6>Delete my account</SC6.SectionTitle6>
+        <SC6.SectionTitle6 onClick={handleDeleteAccount}>Delete my account</SC6.SectionTitle6>
         <SC6.SectionContent6>Permanently delete the account and remove access from all devices.</SC6.SectionContent6>
+        <SC6.IconButton src={img} alt="Icon" />
       </SC6.Section6>
     </SC.Page>
   );
