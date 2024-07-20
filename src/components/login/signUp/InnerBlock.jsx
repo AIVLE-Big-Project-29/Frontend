@@ -88,13 +88,6 @@ const InnerBlock = () => {
         error={error}
       />
       {error.general && <ErrorPage>{error.general}</ErrorPage>}
-      {/* <Link
-        to="/email"
-        state={{
-          Id: signUpInfo.Id,
-          Pw: signUpInfo.Pw,
-        }}
-      /> */}
     </SC.InnerFrame>
   );
 };
