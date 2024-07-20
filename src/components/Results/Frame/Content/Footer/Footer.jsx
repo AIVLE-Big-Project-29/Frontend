@@ -67,7 +67,7 @@ const Footer = ({ isUpload }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://172.30.1.88:8000/AI/upload/', // 서버의 파일 업로드 엔드포인트
+        url: 'http://127.0.0.1:8000/image_generate/',
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
