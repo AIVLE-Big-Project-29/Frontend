@@ -5,6 +5,7 @@ import UploadForm from './UploadForm';
 
 const ImageUpload = () => {
   const [file, setFile] = useState(null);
+  const [receivedImg, setReceivedImg] = useState(null);
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
   const allowedTypes = ['image/jpeg', 'image/png']; // 허용되는 이미지 파일 유형
 
@@ -49,20 +50,25 @@ const ImageUpload = () => {
     }
 
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('init_image', file);
 
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://192.168.0.6:8000/upload_csv/', // 서버의 파일 업로드 수정은 여기서
+        url: 'http://127.0.0.1:8000/generativeAI/image_generate/', // 서버의 파일 업로드 수정은 여기서
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        responseType: 'blob',
       });
       console.log('파일 전송 성공', response.data);
+
+      // Blob 데이터를 URL로 변환
+      const imgURL = URL.createObjectURL(response.data);
       alert('파일 전송 성공');
-      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화합니다.
+      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화
+      setReceivedImg(imgURL); // 변환된 URL을 상태에 저장
     } catch (error) {
       console.error('파일 전송 실패', error);
       setError('파일 전송 실패. 다시 시도해주세요.');
@@ -92,8 +98,17 @@ const ImageUpload = () => {
           handleCancel={handleCancel}
         />
       </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
       {/* 오류 메시지를 표시합니다. */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {/* 조감도 출력 */}
+      {receivedImg && (
+        <>
+          <img src={receivedImg} alt="조감도" />
+          <a href={receivedImg} download="result.png">
+            Download Image
+          </a>
+        </>
+      )}
     </SC.FooterContainer>
   );
 };

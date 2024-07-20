@@ -169,3 +169,10 @@ export const UploadText = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+
+export const ScatterContainer = styled.div`
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  margin: 5px;
+`;

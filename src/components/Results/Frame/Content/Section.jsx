@@ -6,7 +6,9 @@ const Section = ({ title, items, src }) => (
     <SC.SectionTitle>{title}</SC.SectionTitle>
     <SC.List>
       {items.map((item, index) => (
-        <SC.ListItem key={index}>{item}</SC.ListItem>
+        <SC.ListItem key={index}>
+          <p>{item}</p>
+        </SC.ListItem>
       ))}
     </SC.List>
   </SC.Section1>

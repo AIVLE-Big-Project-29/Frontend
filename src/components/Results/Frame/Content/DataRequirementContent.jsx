@@ -7,17 +7,33 @@ import img2 from '../../../../assets/images/2.svg';
 import img3 from '../../../../assets/images/3.svg';
 import img4 from '../../../../assets/images/4.svg';
 
-const DataRequirementContent = () => {
+const DataRequirementContent = ({ isUpload }) => {
   const dataItems = [
-    '대기 오염 데이터.csv',
-    '"Got any creative ideas for a 10-year-old\'s birthday?"',
+    '환경데이터',
+    '',
     '"How do I make an HTTP request in Javascript?"',
     '"How do I make an HTTP request in Javascript?"',
     '"How do I make an HTTP request in Javascript?"',
   ];
 
   const columnNamesItems = [
-    '열 이름 1, 열 이름 2, 열 이름 3, 열 이름 4',
+    `BOD (Biochemical Oxygen Demand)
+    COD (Chemical Oxygen Demand)
+    TOC (Total Organic Carbon)
+    SS (Suspended Solids)
+    DO (Dissolved Oxygen)
+    T-P (Total Phosphorus)
+    총대장균군 (Total Coliforms)
+    분원성대장균군 (Fecal Coliforms)
+    암모니아성질소 (Ammonia Nitrogen)
+    질산성질소 (Nitrate Nitrogen)
+    용존총질소 (Dissolved Total Nitrogen)
+    인산염인 (Phosphate Phosphorus)
+    용존총인 (Dissolved Total Phosphorus)
+    클로로필A (Chlorophyll A)
+    pH 분류 (pH Classification)
+    수온 분류 (Water Temperature Classification)
+    전도 분류 (Conductivity Classification)`,
     'Allows user to provide follow-up corrections.',
     'Trained to decline inappropriate requests.',
     'Trained to decline inappropriate requests.',
@@ -25,7 +41,7 @@ const DataRequirementContent = () => {
   ];
 
   const explanationItems = [
-    '각 구역 대기 오염 데이터를 포함',
+    '수질의 질을 나타내는 다양한 지표 데이터와 대기의 오염 정도를 나타내는 지표 데이터를 포함한다.',
     'May occasionally produce harmful instructions or biased content.',
     'Limited knowledge of world and events after 2021.',
     'Limited knowledge of world and events after 2021.',
@@ -45,7 +61,7 @@ const DataRequirementContent = () => {
           <Section title="Explanation" items={explanationItems} src={img4} />
         </SC.Main>
       </SC.ContentWrapper>
-      <Footer />
+      <Footer isUpload={isUpload} />
     </>
   );
 };

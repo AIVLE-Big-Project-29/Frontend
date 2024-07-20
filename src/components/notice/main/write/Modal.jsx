@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as SC from './style';
+import axios from 'axios';
 
 const Modal = ({ isOpen, closeModal }) => {
   const [title, setTitle] = useState('');
@@ -36,14 +37,14 @@ const Modal = ({ isOpen, closeModal }) => {
     <SC.ModalContainer isOpen={isOpen}>
       <SC.ModalContent>
         <SC.ModalHeader>
-        <SC.TitleText>새 글</SC.TitleText>
+          <SC.TitleText>새 글</SC.TitleText>
           <SC.CloseButton onClick={handleCloseModal}>&times;</SC.CloseButton>
         </SC.ModalHeader>
         <SC.ModalBody>
           <SC.TitleInputWrapper>
             <SC.Input
               type="text"
-              placeholder='제목'
+              placeholder="제목"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               onFocus={() => setIsTitleFocused(true)}
@@ -53,7 +54,7 @@ const Modal = ({ isOpen, closeModal }) => {
           <br />
           <SC.ContentInputWrapper>
             <SC.Textarea
-              placeholder='내용'
+              placeholder="내용"
               value={content}
               style={{ resize: 'none' }}
               onChange={(e) => setContent(e.target.value)}
@@ -68,6 +69,6 @@ const Modal = ({ isOpen, closeModal }) => {
       </SC.ModalContent>
     </SC.ModalContainer>
   );
-}
+};
 
 export default Modal;

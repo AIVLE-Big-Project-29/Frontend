@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import axios from 'axios'; // axios를 임포트합니다.
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import * as SC from './style';
 import FileUpload from './Fileupload';
 
-const Footer = () => {
+const Footer = ({ isUpload }) => {
+  const navigate = useNavigate();
   const [file, setFile] = useState(null);
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
 
@@ -52,15 +55,18 @@ const Footer = () => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://192.168.0.6:8000/upload_csv/', // 서버의 파일 업로드 수정은 여기서!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        url: 'http://127.0.0.1:8000/image_generate/',
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
+
+      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화합니다.
+      isUpload(true);
       console.log('파일 전송 성공', response.data);
       alert('파일 전송 성공');
-      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화합니다.
+      navigate('/results', { state: response.data });
     } catch (error) {
       console.error('파일 전송 실패', error);
       setError('파일 전송 실패. 다시 시도해주세요.');
