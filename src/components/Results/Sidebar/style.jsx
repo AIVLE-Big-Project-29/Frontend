@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Fonts } from '../../../tokens/Font';
 
 export const FContainer = styled.div`
   display: flex;
@@ -44,6 +45,8 @@ export const HeaderWrapper2 = styled.div`
     outline: none;
     border: none;
   }
+  background-color: white;
+  border-radius: 8px;
 `;
 
 export const ToggleWrapper = styled.span`
@@ -193,4 +196,47 @@ export const BackgroundOverlay = styled.div`
 export const MenuToggleWrapper = styled.div`
   padding: 10px; /* 여백 추가 */
   cursor: pointer;
+`;
+
+export const NavMenu2 = styled.button`
+  // nav 속 menu
+  width: 100px;
+  height: 24px;
+  padding: 0;
+  ${Fonts['font-semibold-20']}
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #355342;
+  background-color: white;
+  border: none;
+  outline: none;
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #355342;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+  }
+  &:hover::after {
+    width: 80%;
+  }
+  &:focus {
+    border: none;
+    outline: none;
+  }
+`;
+
+export const NavContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
 `;

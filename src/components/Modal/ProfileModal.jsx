@@ -31,7 +31,7 @@ const ProfileModal = ({ top, onClose, onProfileImageChange, profileImage }) => {
           </SC.ProfileImageWrapper>
           <SC.ProfileDetails>
             <SC.ProfileNameWrapper>
-              <SC.ProfileName>윤동진님</SC.ProfileName>
+              <SC.ProfileName>test12</SC.ProfileName>
               <Logout />
             </SC.ProfileNameWrapper>
             <SC.ProfileEmail>youndj14@naver.com</SC.ProfileEmail>

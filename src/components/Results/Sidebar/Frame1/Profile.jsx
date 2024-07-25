@@ -22,6 +22,8 @@ const Profile = () => {
     localStorage.setItem('profileImage', image);
   };
 
+  const userId = localStorage.getItem('userId');
+
   return (
     <>
       <SC.Profile>
@@ -30,12 +32,10 @@ const Profile = () => {
             <SC.ProfilePhoto onClick={openModal}>
               <SC.Photo src={profileImage || profileIcon} alt="프로필 사진" />
             </SC.ProfilePhoto>
-            <SC.Name onClick={openModal} style={{ cursor: 'pointer' }}>
-              ByeWind
-            </SC.Name>
+            <SC.Name>{userId}</SC.Name>
           </SC.ProfileWrapper>
         </SC.ProfileName>
-        <SC.ProfileMenu>
+        {/* <SC.ProfileMenu>
           <SC.IconText>
             <SC.IconWrapper>
               <SC.Icon>
@@ -46,17 +46,17 @@ const Profile = () => {
               <SC.Text>My Account</SC.Text>
             </SC.TextWrapper>
           </SC.IconText>
-        </SC.ProfileMenu>
+        </SC.ProfileMenu> */}
       </SC.Profile>
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <ProfileModal
           top={modalPosition.top}
           onClose={closeModal}
           profileImage={profileImage}
           onProfileImageChange={handleProfileImageChange}
         />
-      )}
+      )} */}
     </>
   );
 };
