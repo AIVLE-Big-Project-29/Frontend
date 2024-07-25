@@ -45,8 +45,6 @@ export const HeaderWrapper2 = styled.div`
     outline: none;
     border: none;
   }
-  background-color: white;
-  border-radius: 8px;
 `;
 
 export const ToggleWrapper = styled.span`
@@ -239,4 +237,7 @@ export const NavContainer = styled.div`
   align-items: center;
   width: 100%;
   gap: 10px;
+  background-color: white;
+  border-radius: 8px;
+  height: 300px;
 `;
