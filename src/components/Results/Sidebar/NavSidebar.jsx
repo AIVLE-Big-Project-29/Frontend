@@ -16,6 +16,7 @@ const NavSidebar = () => {
   //   }
   //   if (url === 'notice') {
   //     navigate('/notice');
+
   //   }
   //   if (url === 'settings') {
   //     navigate('/settings');

@@ -4,7 +4,7 @@ import * as SC from './style';
 import UploadForm from './UploadForm';
 import { IMGUPLOADURL } from '../../../tokens/Urls';
 
-const ImageUpload = ({ setReceivedImg }) => {
+const ImageUpload = ({ setReceivedImg, receivedImg }) => {
   const [file, setFile] = useState(null);
 
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
@@ -93,6 +93,13 @@ const ImageUpload = ({ setReceivedImg }) => {
         <SC.SubmitFileButton onClick={handleSubmit}>
           파일 보내기
         </SC.SubmitFileButton>
+        {receivedImg && (
+          <SC.SubmitFileButton>
+            <SC.DownloadA href={receivedImg} download="result.png">
+              결과 다운로드
+            </SC.DownloadA>
+          </SC.SubmitFileButton>
+        )}
       </SC.BtnContainer>
       <SC.ImgUploadContainer className="App">
         <UploadForm

@@ -66,7 +66,10 @@ const Results = () => {
             </SC.ImgResultContainer>
             {/* 이미지 업로드 */}
             <SC.UploadContainer>
-              <ImageUpload setReceivedImg={setReceivedImg} />
+              <ImageUpload
+                setReceivedImg={setReceivedImg}
+                receivedImg={receivedImg}
+              />
             </SC.UploadContainer>
           </SC.Map>
         </SC.MapContainer>

@@ -97,6 +97,7 @@ export const SubmitFileButton = styled.button`
   border: none;
   position: relative;
   top: -20px; /* 위치를 더 위로 올림 */
+  margin-right: 10px;
 `;
 
 export const UploadContainer = styled.div`
@@ -208,5 +209,13 @@ export const ExampleText = styled.p`
 `;
 
 export const ExampleImg = styled.img`
-  height: 80%;
+  height: 100%;
+  width: 100%;
+`;
+
+export const DownloadA = styled.a`
+  color: white;
+  ${Fonts['font-regular-18']}
+  font-size: 16px;
+  line-height: 20px;
 `;
