@@ -18,11 +18,12 @@ const InnerBlock = () => {
   const [error, setError] = useState({
     Id: '',
     Pw: '',
+    ConfirmPw: '',
     general: '',
   });
 
   const validateForm = () => {
-    let errorMsg = { Id: '', Pw: '' };
+    let errorMsg = { Id: '', Pw: '', ConfirmPw: '' };
     if (!signUpInfo.Id) {
       errorMsg.Id = '아이디를 입력하세요';
     }
@@ -35,9 +36,13 @@ const InnerBlock = () => {
     if (signUpInfo.Pw.length < 8 || signUpInfo.Pw.length > 20) {
       errorMsg.Pw = '비밀번호는 8~20자 이내로 입력하셔야 합니다';
     }
-    // if (signUpInfo.Pw.length < 8) {
-    //   return 'Password는 8자 이상이여야 합니다.';
-    // }
+    if (signUpInfo.Pw.length < 8) {
+      errorMsg.Pw = '비밀번호는 8자 이상이여야 합니다';
+    }
+
+    if (signUpInfo.Pw !== signUpInfo.confirmPw) {
+      errorMsg.ConfirmPw = '입력한 비밀번호와 일치하지 않습니다';
+    }
 
     return errorMsg;
   };
@@ -53,7 +58,6 @@ const InnerBlock = () => {
       [name]: '',
       general: '',
     }));
-    console.log(signUpInfo);
   };
 
   const handleSubmit = (event) => {
@@ -61,10 +65,10 @@ const InnerBlock = () => {
     // id, pw 입력 확인
     const validateError = validateForm();
     // 입력 오류가 있으면 error 설정
-    if (validateError.Id || validateError.Pw) {
+    if (validateError.Id || validateError.Pw || validateError.ConfirmPw) {
       setError(validateError);
     } else {
-      setError({ Id: '', Pw: '', general: '' });
+      setError({ Id: '', Pw: '', ConfirmPw: '', general: '' });
       // 입력 오류가 없으면 이메일 인증 페이지로 넘어감
       navigate('/email', { state: signUpInfo });
     }

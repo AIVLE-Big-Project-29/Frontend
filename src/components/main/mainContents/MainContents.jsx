@@ -9,6 +9,7 @@ import mainImg from '../../../assets/images/mainBack.png';
 import Gallery from '../gallery/Gallery';
 import Footer from '../Footer/Footer';
 import NavSecond from './NavSecond';
+import logo from '../../../assets/images/GreenCitynotext.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -163,6 +164,9 @@ const MainContents = () => {
             </SC.MainHeader>
           </SC.Container>
         </SC.Header>
+        <SC.LogoContainer>
+          <SC.Logo src={logo} alt="로고" />
+        </SC.LogoContainer>
         <NavSecond />
         {/* 스크롤 시작 */}
         <Gallery />

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Fonts } from '../../../../../tokens/Font';
 
 export const Submit = styled.div`
   display: flex;
@@ -34,7 +35,6 @@ export const FooterContainer = styled.footer`
   backdrop-filter: blur(50px);
   text-align: center;
   position: relative;
-  top: -100px; /* 필요한 만큼 위로 이동 */
 `;
 
 export const UploadContainer = styled.div`
@@ -66,7 +66,9 @@ export const DragDropArea = styled.div`
 `;
 
 export const UploadText = styled.p`
+  ${Fonts['font-regular-14']}
   font-size: 16px;
+  font-weight: 500;
   color: #333;
   min-width: 300px; /* 최소 너비 설정 */
   max-width: 400px; /* 최대 너비 설정 */

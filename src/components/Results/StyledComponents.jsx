@@ -12,7 +12,7 @@ export const SidebarContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   padding: 0px;
-  width: 19%;
+  width: 17vw;
   left: 0px;
   top: 0px;
   bottom: 0px;
@@ -30,7 +30,7 @@ export const MainContent = styled.main`
   padding: 0px;
   gap: 10px;
   min-height: 612.4px; /* 최소 높이 설정 */
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   box-sizing: border-box; /* Padding을 포함한 전체 크기를 지정 */
   overflow-y: auto;
@@ -38,7 +38,8 @@ export const MainContent = styled.main`
 
 export const Map = styled.div`
   width: 80%;
-  height: 710px;
+  height: 1100px;
+  margin: 5px;
 `;
 
 export const CaptureBtn = styled.button`
@@ -79,8 +80,7 @@ export const CaptureBtnText = styled.p`
 
 export const MapContainer = styled.div`
   width: 100%;
-  height: 720px;
-  gap: 10px;
+  height: 1200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -90,10 +90,52 @@ export const MapContainer = styled.div`
 
 export const UploadContainer = styled.div`
   width: 100%;
-  height: 720px;
+  height: 320px;
   gap: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+`;
+
+export const ImgResultContainer = styled.div`
+  height: 700px;
+`;
+
+export const expContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const expTitle = styled.h2`
+  ${Fonts['font-semibold-30']}
+  font-weight: 500;
+  font-size: 27px;
+  height: 36px;
+`;
+
+export const expText = styled.p`
+  margin: 0;
+`;
+
+export const QuestionIconBtn = styled.button`
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background-color: transparent;
+`;
+
+export const QuestionIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const ExpTitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
   align-items: center;
 `;

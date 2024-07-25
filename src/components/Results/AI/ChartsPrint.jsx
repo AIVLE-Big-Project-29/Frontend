@@ -16,6 +16,12 @@ import {
 const ChartsPrint = ({ data }) => {
   const [selectedPoints, setSelectedPoints] = useState([]);
   const receivedData = data;
+  const tmp = receivedData.existing_results_actual_1.map((loc, index) => ({
+    x: loc.necessity,
+    y: loc.compatibility,
+    // label: loc,
+  }));
+  console.log(tmp);
 
   ChartJS.register(
     LinearScale,
@@ -32,10 +38,15 @@ const ChartsPrint = ({ data }) => {
     datasets: [
       {
         label: '예측 데이터',
-        data: receivedData.location.map((loc, index) => ({
-          x: receivedData.necessity[index],
-          y: receivedData.compatibility[index],
-          label: loc,
+        // data: {
+        //   x: receivedData.model_results.necessity[0],
+        //   y: receivedData.model_results.compatibility[0],
+        //   label: receivedData.model_results.location,
+        // },
+        data: receivedData.model_results.map((loc, index) => ({
+          x: loc.necessity,
+          y: loc.compatibility,
+          label: loc.location,
         })),
         backgroundColor: 'rgba(252, 34, 0, 0.5)',
         borderColor: 'rgb(252, 34, 0)',
@@ -45,10 +56,17 @@ const ChartsPrint = ({ data }) => {
       },
       {
         label: '실제 선택 데이터',
-        data: receivedData.location.map((loc, index) => ({
-          x: receivedData.necessity[index],
-          y: receivedData.compatibility[index],
-          label: loc,
+        // data: [
+        //   {
+        //     x: receivedData.existing_results_actual_1.necessity,
+        //     y: receivedData.existing_results_actual_1.compatibility,
+        //     label: receivedData.existing_results_actual_1.location,
+        //   },
+        // ],
+        data: receivedData.existing_results_actual_1.map((loc, index) => ({
+          x: loc.necessity,
+          y: loc.compatibility,
+          label: loc.location,
         })),
         backgroundColor: 'rgb(0, 110, 255, 0.2)',
         borderColor: 'rgb(0, 110, 255)',
@@ -58,10 +76,15 @@ const ChartsPrint = ({ data }) => {
       },
       {
         label: '실제 미선택 데이터',
-        data: receivedData.location.map((loc, index) => ({
-          x: receivedData.necessity[index],
-          y: receivedData.compatibility[index],
-          label: loc,
+        // data: {
+        //   x: receivedData.existing_results_actual_0.necessity,
+        //   y: receivedData.existing_results_actual_0.compatibility,
+        //   label: receivedData.existing_results_actual_0.location,
+        // },
+        data: receivedData.existing_results_actual_0.map((loc, index) => ({
+          x: loc.necessity,
+          y: loc.compatibility,
+          label: loc.location,
         })),
         backgroundColor: 'rgb(255, 162, 0, 0.5)',
         borderColor: 'rgb(255, 162, 0)',
@@ -73,14 +96,23 @@ const ChartsPrint = ({ data }) => {
   };
 
   const options = {
+    responsive: true,
     scales: {
       x: {
         type: 'linear',
         position: 'bottom',
+        title: {
+          display: true,
+          text: '필요성',
+        },
       },
       y: {
         type: 'linear',
         position: 'left',
+        title: {
+          display: true,
+          text: '적합성',
+        },
       },
     },
     plugins: {
@@ -123,8 +155,8 @@ const ChartsPrint = ({ data }) => {
               ...prev,
               {
                 location: location,
-                env: receivedData.env[dataIndex], // 환경 관련 데이터
-                life: receivedData.life[dataIndex], // 생활 관련 데이터
+                env: receivedData.model_results[dataIndex].env, // 환경 관련 데이터
+                life: receivedData.model_results[dataIndex].life, // 생활 관련 데이터
               },
             ];
             console.log('newPoints', newPoints);
@@ -148,44 +180,29 @@ const ChartsPrint = ({ data }) => {
     labels: selectedPoints.map((point) => point.location),
     datasets: [
       {
-        label: '환경 데이터',
+        label: '환경숲',
         data: selectedPoints.map((point) => point.env),
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
+        barPercentage: 0.77,
+        categoryPercentage: 0.5,
       },
       {
-        label: '생활 데이터',
+        label: '생활숲',
         data: selectedPoints.map((point) => point.life),
         backgroundColor: 'rgba(73, 138, 138, 0.2)',
         borderColor: 'rgba(75, 138, 138, 1)',
         borderWidth: 1,
+        barPercentage: 0.7,
+        categoryPercentage: 0.5,
       },
     ],
   };
 
   const barOptions = {
     responsive: true,
-    // parsing: {
-    //   xAxisKey: 'location',
-    // },
-    plugins: {
-      // title: {
-      //   display: true,
-      //   text: 'Bar Plot',
-      // },
-      // tooltip: {
-      //   mode: 'index',
-      //   intersect: false,
-      // callbacks: {
-      //   title: (context) => {
-      //     return `location: ${context[0].raw.label}`;
-      //   },
-      //   label: (context) =>
-      //     `necessity: ${context.parsed.x}, compatibility: ${context.parsed.y}`,
-      // },
-      // },
-    },
+    plugins: {},
     scales: {
       x: {
         type: 'category',
@@ -206,12 +223,32 @@ const ChartsPrint = ({ data }) => {
   };
 
   return (
-    <>
-      <Scatter data={chartData} options={options} />
+    <SC.ChartContainer>
+      <Scatter
+        data={chartData}
+        options={options}
+        style={{
+          boxSizing: 'border-box',
+          display: 'block',
+          height: '40vh',
+          width: '75vw',
+          cursor: 'pointer',
+        }}
+      />
       {selectedPoints.length > 0 && (
-        <Bar data={barChartData} options={barOptions} />
+        <Bar
+          data={barChartData}
+          options={barOptions}
+          style={{
+            boxSizing: 'border-box',
+            display: 'block',
+            height: '40vh',
+            width: '75vw',
+            cursor: 'pointer',
+          }}
+        />
       )}
-    </>
+    </SC.ChartContainer>
   );
 };
 

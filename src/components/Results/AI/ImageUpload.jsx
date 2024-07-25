@@ -2,10 +2,11 @@ import { useState } from 'react';
 import axios from 'axios'; // axios를 임포트합니다.
 import * as SC from './style';
 import UploadForm from './UploadForm';
+import { IMGUPLOADURL } from '../../../tokens/Urls';
 
-const ImageUpload = () => {
+const ImageUpload = ({ setReceivedImg }) => {
   const [file, setFile] = useState(null);
-  const [receivedImg, setReceivedImg] = useState(null);
+
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
   const allowedTypes = ['image/jpeg', 'image/png']; // 허용되는 이미지 파일 유형
 
@@ -49,16 +50,19 @@ const ImageUpload = () => {
       return;
     }
 
+    const token = localStorage.getItem('accessToken');
+
     const formData = new FormData();
     formData.append('init_image', file);
 
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/generativeAI/image_generate/', // 서버의 파일 업로드 수정은 여기서
+        url: IMGUPLOADURL,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
         responseType: 'blob',
       });
@@ -77,7 +81,7 @@ const ImageUpload = () => {
 
   return (
     <SC.FooterContainer>
-      <div>
+      <SC.BtnContainer>
         <SC.FileInputLabel>
           파일 선택
           <SC.FileInput
@@ -89,26 +93,17 @@ const ImageUpload = () => {
         <SC.SubmitFileButton onClick={handleSubmit}>
           파일 보내기
         </SC.SubmitFileButton>
-      </div>
-      <div className="App">
+      </SC.BtnContainer>
+      <SC.ImgUploadContainer className="App">
         <UploadForm
           file={file}
           handleDrop={handleDrop}
           handleDragOver={handleDragOver}
           handleCancel={handleCancel}
         />
-      </div>
+      </SC.ImgUploadContainer>
       {/* 오류 메시지를 표시합니다. */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      {/* 조감도 출력 */}
-      {receivedImg && (
-        <>
-          <img src={receivedImg} alt="조감도" />
-          <a href={receivedImg} download="result.png">
-            Download Image
-          </a>
-        </>
-      )}
     </SC.FooterContainer>
   );
 };

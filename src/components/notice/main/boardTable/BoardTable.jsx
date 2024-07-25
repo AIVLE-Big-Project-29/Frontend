@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as SC from './style';
 import DetailModal from '../detailModal/DetailModal';
 import axios from 'axios';
+import { BOARDREADURL } from '../../../../tokens/Urls';
 
 const BoardTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,13 +17,19 @@ const BoardTable = () => {
   const [posts, setPosts] = useState([]);
   const [slicedPosts, setSlicedPosts] = useState([]);
 
+  const token = localStorage.getItem('accessToken');
+
   // 게시판 글 조회 요청
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await axios.get(
-          'http://172.30.1.84:8000/notice/board/list/'
-        );
+        const response = await axios({
+          method: 'get',
+          url: BOARDREADURL,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log('Server response:', response.data);
 
         setPosts(response.data);
@@ -68,9 +75,14 @@ const BoardTable = () => {
       try {
         console.log('삭제 실행');
 
-        const response = await axios.delete(
-          `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`
-        );
+        const token = localStorage.getItem('accessToken');
+        const response = await axios({
+          method: 'delete',
+          url: BOARDREADURL + `${selectedPost.id}/`, // 실제 서버 URL로 변경
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         console.log(response);
         if (response.status === 204) {
           console.log('삭제 완료', response.data);
@@ -113,13 +125,18 @@ const BoardTable = () => {
 
   const handleUpdate = async (title, content) => {
     try {
-      const response = await axios.put(
-        `http://172.30.1.84:8000/notice/board/list/${selectedPost.id}/`,
-        {
+      const token = localStorage.getItem('accessToken');
+      const response = await axios({
+        method: 'put',
+        url: BOARDREADURL + `${selectedPost.id}/`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
           title: title,
           content: content,
-        }
-      );
+        },
+      });
 
       if (response.status === 200) {
         console.log('수정 완료', response.data);
@@ -154,7 +171,7 @@ const BoardTable = () => {
               <SC.Th width="10%">Index</SC.Th>
               <SC.Th width="50%">Title</SC.Th>
               <SC.Th width="20%">Date</SC.Th>
-              <SC.Th width="20%">Name</SC.Th>
+              <SC.Th width="20%">User</SC.Th>
             </tr>
           </thead>
           <tbody>
@@ -165,7 +182,7 @@ const BoardTable = () => {
                   {post.title}
                 </SC.Td>
                 <SC.Td>{post.created_at}</SC.Td>
-                <SC.Td>{post.username}</SC.Td>
+                <SC.Td>{post.user}</SC.Td>
               </SC.Tr>
             ))}
           </tbody>

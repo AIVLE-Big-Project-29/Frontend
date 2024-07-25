@@ -5,12 +5,12 @@ export const Header = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-end;
   padding: 20px 28px;
   gap: 312px;
-  position: absolute;
-  height: 68px;
+  height: 96px;
+  width: 100vw;
   left: 244px;
   right: 0px;
   top: 0px;
@@ -25,7 +25,7 @@ export const HeaderTextContainer = styled.div`
   align-content: flex-start;
   padding: 0px;
   gap: 8px;
-  width: 68px;
+  /* width: 68px; */
   height: 20px;
   border-radius: 8px;
 `;
@@ -36,10 +36,12 @@ export const HeaderText = styled.p`
   justify-content: center;
   align-items: flex-start;
   padding: 0px;
-  width: 56px;
+  /* width: 56px; */
   height: 20px;
   margin: 0;
   border-radius: 8px;
+  ${Fonts['font-semibold-24']}
+  font-size: 30px;
 `;
 
 export const HeaderSide = styled.div`

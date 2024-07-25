@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as SC from './style';
 import dot from '../../../../assets/images/dot.svg';
+import profileIcon from '../../../../assets/images/profileIcon.png';
 import ProfileModal from '../../../Modal/ProfileModal';
 
 const Profile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
+  const [modalPosition, setModalPosition] = useState({ top: 0 });
   const [profileImage, setProfileImage] = useState('');
 
   const openModal = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    setModalPosition({ top: rect.bottom + window.scrollY, left: rect.left });
+    setModalPosition({ top: rect.bottom + window.scrollY });
     setIsModalOpen(true);
   };
 
@@ -27,10 +28,10 @@ const Profile = () => {
         <SC.ProfileName>
           <SC.ProfileWrapper>
             <SC.ProfilePhoto onClick={openModal}>
-              <SC.Photo src={profileImage || 'path/to/default/icon'} alt="프로필 사진" />
+              <SC.Photo src={profileImage || profileIcon} alt="프로필 사진" />
             </SC.ProfilePhoto>
-            <SC.Name onClick={openModal} style={{ cursor: 'pointer' }}> 
-            ByeWind
+            <SC.Name onClick={openModal} style={{ cursor: 'pointer' }}>
+              ByeWind
             </SC.Name>
           </SC.ProfileWrapper>
         </SC.ProfileName>
@@ -51,7 +52,6 @@ const Profile = () => {
       {isModalOpen && (
         <ProfileModal
           top={modalPosition.top}
-          left={modalPosition.left}
           onClose={closeModal}
           profileImage={profileImage}
           onProfileImageChange={handleProfileImageChange}

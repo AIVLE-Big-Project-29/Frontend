@@ -38,8 +38,7 @@ export const Header = styled.div`
 
 export const Main = styled.div`
   display: flex;
-  justify-content: space-between;
-  min-height: 400px;
+  justify-content: center;
   padding: 0px;
   background-color: #ffffff; /* Main 배경색 설정 */
   border-radius: 8px;
@@ -60,6 +59,8 @@ export const ListItem = styled.li`
   border-radius: 8px;
   background-color: #f7f9fb;
   padding: 4px;
+  white-space: pre-wrap;
+  color: black;
 `;
 
 export const IconTitle = styled.p`
@@ -68,8 +69,8 @@ export const IconTitle = styled.p`
   margin: 0;
   /* left: calc(50% - 139px / 2 + 40px);
   top: calc(50% - 64px / 2); */
-
-  ${Fonts['font-regular-20']}
+  ${Fonts['font-semibold-24']}
+  font-size: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -101,7 +102,7 @@ export const Section1 = styled.section`
 `;
 
 export const SectionTitle = styled.h2`
-  width: 120px;
+  width: 180px;
   height: 24px;
   color: #1c1c1c;
   margin-bottom: 1%;

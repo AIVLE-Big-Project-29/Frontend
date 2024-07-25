@@ -1,9 +1,8 @@
-import React from 'react';
 import * as SC from './profileModalStyle';
 import Logout from '../logout/Logout';
+import profileIcon from '../../assets/images/profileIcon.png';
 
-const ProfileModal = ({ top, left, onClose, onProfileImageChange, profileImage }) => {
-
+const ProfileModal = ({ top, onClose, onProfileImageChange, profileImage }) => {
   const handleProfileImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -17,11 +16,18 @@ const ProfileModal = ({ top, left, onClose, onProfileImageChange, profileImage }
 
   return (
     <SC.ModalBackground onClick={onClose}>
-      <SC.ModalContainer style={{ top: top, left: left }} onClick={(e) => e.stopPropagation()}>
+      <SC.ModalContainer
+        style={{ top: top }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <SC.ProfileContent>
           <SC.ProfileImageWrapper>
-            <SC.ProfileImage src={profileImage || 'path/to/default/icon'} alt="Profile" />
-            <SC.ProfileImageInput type="file" accept="image/*" onChange={handleProfileImageChange} />
+            <SC.ProfileImage src={profileImage || profileIcon} alt="Profile" />
+            <SC.ProfileImageInput
+              type="file"
+              accept="image/*"
+              onChange={handleProfileImageChange}
+            />
           </SC.ProfileImageWrapper>
           <SC.ProfileDetails>
             <SC.ProfileNameWrapper>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import * as SC from './style';
 import FileUpload from './Fileupload';
+import { CSVUPLOADURL } from '../../../../../tokens/Urls';
 
 const Footer = ({ isUpload }) => {
   const navigate = useNavigate();
@@ -56,6 +57,8 @@ const Footer = ({ isUpload }) => {
   };
 
   const handleSubmit = async () => {
+    const token = localStorage.getItem('accessToken');
+
     if (!file) {
       alert('업로드할 파일이 없습니다.');
       return;
@@ -67,10 +70,11 @@ const Footer = ({ isUpload }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/image_generate/',
+        url: CSVUPLOADURL,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
       });
 

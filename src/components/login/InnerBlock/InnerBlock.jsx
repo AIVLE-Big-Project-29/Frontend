@@ -8,6 +8,7 @@ import logo from '../../../assets/images/GreenCity.png';
 import line from '../../../assets/images/Line.svg';
 import UnderBar from './UnderBar';
 import ErrorPage from '../../ErrorPage';
+import { SIGNINURL } from '../../../tokens/Urls';
 
 const InnerBlock = () => {
   const navigate = useNavigate();
@@ -70,21 +71,18 @@ const InnerBlock = () => {
       setError({ Id: '', Pw: '', general: '' });
 
       try {
-        console.log(loginInfo);
-
         // 입력 오류가 없으면 데이터 전송
         const response = await axios({
           method: 'post',
-          url: 'http://172.30.1.84:8000/user_api/login/',
+          url: SIGNINURL,
           withCredentials: false,
           data: {
             username: loginInfo.Id,
             password: loginInfo.Pw,
           },
         });
-        console.log('로그인 성공', response.data);
-        // 로그인 성공 후 웹 스토리지에 토큰 저장, 메인 페이지로 이동
 
+        // 로그인 성공 후 웹 스토리지에 토큰 저장, 메인 페이지로 이동
         localStorage.setItem('accessToken', response.data['access']);
         localStorage.setItem('refreshToken', response.data['refresh']);
 

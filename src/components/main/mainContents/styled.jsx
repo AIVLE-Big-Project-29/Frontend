@@ -92,8 +92,10 @@ export const HeaderWrapper2 = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 1px;
-  left: 20px;
+  top: 50px;
+  right: 20px;
+  align-items: flex-end;
+  z-index: 1;
   &:hover :active :focus {
     outline: none;
     border: none;
@@ -122,6 +124,8 @@ export const Nav2 = styled.div`
   align-items: center;
   gap: 20px;
   flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
 `;
 
 export const NavMenu = styled.button`
@@ -281,8 +285,8 @@ export const ToggleWrapper = styled.span`
 
   .svg-2 {
     position: absolute;
-    left: 0px;
-    top: 160px;
+    right: 10px;
+    top: 0px;
     animation: ${(props) =>
         props.status === 'open' ? `rotate_in_ccw` : `rotate_out_ccw`}
       0.8s;
@@ -330,9 +334,24 @@ export const LogoContainer = styled.div`
   width: 150px;
   height: 150px;
   margin: 5px;
+  position: fixed;
+  top: 10px;
 `;
 
 export const Logo = styled.img`
   width: 100%;
   height: 100%;
+`;
+
+export const BackgroundOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); // 회색 배경
+  z-index: 0; // 메뉴보다 뒤에 배치하여 클릭이 가능하게 설정
+  pointer-events: ${(props) => (props.visible ? 'auto' : 'none')};
+  display: ${(props) => (props.visible ? 'auto' : 'none')};
+  transition: background-color 0.3s;
 `;

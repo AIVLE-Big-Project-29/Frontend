@@ -15,8 +15,6 @@ const DetailModal = ({
   const [editedTitle, setEditedTitle] = useState(selectedPost.title);
   const [editedContent, setEditedContent] = useState(selectedPost.content);
 
-  if (!isOpen || !selectedPost) return null;
-
   useEffect(() => {
     console.log(selectedPost);
 
@@ -25,6 +23,8 @@ const DetailModal = ({
       setEditedContent(selectedPost.content);
     }
   }, [isOpen, selectedPost]);
+
+  if (!isOpen || !selectedPost) return null;
 
   const handleModifyDetail = () => {
     setIsEditMode(true);

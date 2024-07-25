@@ -4,6 +4,7 @@ import { Fonts } from '../../../tokens/Font.js';
 export const InnerFrame = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 24px;
@@ -166,9 +167,8 @@ export const UnderBarSign = styled.p`
   height: 20px;
   ${Fonts['font-regular-14']}
   color: #355342;
-  cursor: pointer;  /* 커서 추가 */
+  cursor: pointer; /* 커서 추가 */
 `;
-
 
 export const UnderBarForgot = styled.p`
   /* Forgot Password */
