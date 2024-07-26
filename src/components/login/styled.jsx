@@ -123,8 +123,8 @@ export const MainBlock = styled.div`
   position: absolute;
   width: 580px;
   height: 600px;
-  left: calc(50% - 580px / 2 + 0.5px);
-  top: calc(55% - 700px / 2);
+  left: calc(49% - 600px / 2 + 0.5px);
+  top: calc(53% - 700px / 2);
   background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.4),
