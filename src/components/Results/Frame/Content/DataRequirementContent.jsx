@@ -7,6 +7,8 @@ import img1 from '../../../../assets/images/GreenCityBig.png';
 import img2 from '../../../../assets/images/2.svg';
 import img3 from '../../../../assets/images/3.svg';
 import img4 from '../../../../assets/images/4.svg';
+import sample from '../../../../../public/sampleExcel.xlsx';
+import download from '../../../../assets/images/downloadIcon.png';
 
 const DataRequirementContent = ({ isUpload }) => {
   const [isDisplay, setIsDisplay] = useState(false);
@@ -139,6 +141,12 @@ const DataRequirementContent = ({ isUpload }) => {
             state={isDisplay}
           />
           <Section title="Explanation" items={explanationItems} src={img4} />
+          <SC.DownloadBtn>
+            <SC.DownloadImg src={download} alt="다운로드 아이콘" />
+            <SC.SampleDownloadA href={sample} download="sampleExcel.xlsx">
+              xlsx 양식
+            </SC.SampleDownloadA>
+          </SC.DownloadBtn>
         </SC.Main>
       </SC.ContentWrapper>
       <Footer isUpload={isUpload} />
