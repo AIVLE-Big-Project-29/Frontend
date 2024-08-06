@@ -9,7 +9,7 @@ const MainBlock = () => {
       <SC.MainBlockHeader>
         <CloseBtn />
       </SC.MainBlockHeader>
-      <InnerBlock></InnerBlock>
+      <InnerBlock />
     </SC.MainBlock>
   );
 };

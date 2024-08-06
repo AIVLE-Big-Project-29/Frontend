@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as SC from './style';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { BOARDCREATEURL } from '../../../../tokens/Urls';
 
 const Modal = ({ isOpen, closeModal }) => {
   const navigate = useNavigate();
@@ -18,21 +19,32 @@ const Modal = ({ isOpen, closeModal }) => {
 
   const handleSave = async () => {
     try {
+      const token = localStorage.getItem('accessToken');
       const response = await axios({
         method: 'POST',
-        url: 'http://172.30.1.84:8000/notice/board/create/', // 실제 서버 URL로 변경
+        url: BOARDCREATEURL, // 실제 서버 URL로 변경
         data: {
           title: title,
           content: content,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
 
       console.log('Server response:', response.data);
       handleCloseModal();
+      // 자동 새로고침
+      window.location.reload();
     } catch (error) {
       handleCloseModal();
       console.error('Error saving post:', error);
     }
+  };
+
+  const titleHandler = (event) => {
+    console.log(event.target.value);
+    setTitle(event.target.value);
   };
 
   return (
@@ -46,9 +58,9 @@ const Modal = ({ isOpen, closeModal }) => {
           <SC.TitleInputWrapper>
             <SC.Input
               type="text"
-              placeholder='제목'
+              placeholder="제목"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={titleHandler}
               onFocus={() => setIsTitleFocused(true)}
               onBlur={() => setIsTitleFocused(false)}
             />
@@ -56,7 +68,7 @@ const Modal = ({ isOpen, closeModal }) => {
           <br />
           <SC.ContentInputWrapper>
             <SC.Textarea
-              placeholder='내용'
+              placeholder="내용"
               value={content}
               style={{ resize: 'none' }}
               onChange={(e) => setContent(e.target.value)}
@@ -71,6 +83,6 @@ const Modal = ({ isOpen, closeModal }) => {
       </SC.ModalContent>
     </SC.ModalContainer>
   );
-}
+};
 
 export default Modal;

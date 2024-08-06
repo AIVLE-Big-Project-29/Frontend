@@ -10,9 +10,9 @@ const MainHeader = () => {
   return (
     <SC.Header>
       <SC.HeaderTextContainer>
-        <SC.HeaderText>공지사항</SC.HeaderText>
+        <SC.HeaderText>게시판</SC.HeaderText>
       </SC.HeaderTextContainer>
-      <SC.HeaderSide>
+      {/* <SC.HeaderSide>
         <SC.HeaderSearchContainer>
           <SC.SearchIconInput>
             <SC.SearchIconContainer>
@@ -35,7 +35,7 @@ const MainHeader = () => {
             </SC.IconSet>
           </SC.IconBtn>
         </SC.IconGroup>
-      </SC.HeaderSide>
+      </SC.HeaderSide> */}
     </SC.Header>
   );
 };

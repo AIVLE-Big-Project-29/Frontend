@@ -1,8 +1,14 @@
 import * as SC from './style';
-
 import email from '../../../assets/images/bigEmail.svg';
 
-const EmailInner = ({ onChange, onClick, onSignUp }) => {
+const EmailInner = ({
+  onChange,
+  onClick,
+  onSignUp,
+  formatTime,
+  seconds,
+  isActive,
+}) => {
   return (
     <SC.Frame>
       <SC.EmailIconWrapper>
@@ -35,7 +41,7 @@ const EmailInner = ({ onChange, onClick, onSignUp }) => {
           <SC.Text>Sign Up</SC.Text>
         </SC.BtnText>
       </SC.InputBtn>
-      <SC.SmallText>Resend 3:00</SC.SmallText>
+      {isActive && <SC.SmallText>{formatTime(seconds)}</SC.SmallText>}
     </SC.Frame>
   );
 };

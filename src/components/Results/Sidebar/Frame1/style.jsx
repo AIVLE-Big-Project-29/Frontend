@@ -30,9 +30,9 @@ export const Profile = styled.div`
   align-items: flex-start;
   padding: 0px 0px 12px;
   gap: 4px;
-
   width: 180px;
-  height: 100px;
+  height: 40px;
+  z-index: 100;
 `;
 
 export const ProfileName = styled.div`
@@ -82,10 +82,10 @@ export const Photo = styled.img`
 
 export const Name = styled.p`
   // 프로필 이름
-  width: 58px;
+  width: fit-content;
   height: 20px;
   margin: 0;
-  ${Fonts['font-regular-14']}
+  ${Fonts['font-regular-18']}
   color: #1c1c1c;
 `;
 
@@ -189,10 +189,12 @@ export const PageMenu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0px 0px 12px;
+  padding: 10px;
   gap: 4px;
-  width: 180px;
-  height: 200px;
+  width: 200px;
+  height: 270px;
+  background-color: white;
+  border-radius: 8px;
 `;
 
 export const MenuTitle = styled.div`

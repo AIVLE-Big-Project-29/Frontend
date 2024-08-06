@@ -3,27 +3,34 @@ import * as SC from './style';
 import dele from '../../../../assets/images/delete.svg';
 import modi from '../../../../assets/images/modify.svg';
 
-const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) => { // prop 이름 수정
+const DetailModal = ({
+  isOpen,
+  closeModal,
+  selectedPost,
+  onDelete,
+  onModify,
+}) => {
+  // prop 이름 수정
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedTitle, setEditedTitle] = useState(selectedPost.title);
   const [editedContent, setEditedContent] = useState(selectedPost.content);
 
-  if (!isOpen || !selectedPost) return null;
-
   useEffect(() => {
     console.log(selectedPost);
-    
+
     if (isOpen && selectedPost) {
       setEditedTitle(selectedPost.title);
       setEditedContent(selectedPost.content);
     }
   }, [isOpen, selectedPost]);
 
+  if (!isOpen || !selectedPost) return null;
+
   const handleModifyDetail = () => {
     setIsEditMode(true);
   };
   const handleSaveDetail = () => {
-    onModify(editedTitle, editedContent);  // posts가 비동기라 앞에 await 넣어야 된다는디?
+    onModify(editedTitle, editedContent); // posts가 비동기라 앞에 await 넣어야 된다는디?
     setIsEditMode(false);
   };
 
@@ -36,29 +43,28 @@ const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) =
       <SC.DetailModalContent>
         <SC.DetailModalHeader>
           <SC.DetailTitleText></SC.DetailTitleText>
-          <SC.DetailCloseButton onClick={closeModal}>&times;</SC.DetailCloseButton>
+          <SC.DetailCloseButton onClick={closeModal}>
+            &times;
+          </SC.DetailCloseButton>
         </SC.DetailModalHeader>
         <SC.DetailModalBody>
           <SC.DetailTitleWrapper>
             {isEditMode ? (
-                <SC.TitleArea
-                  value={editedTitle}
-                  onChange={editTitleHandler}
-                />
+              <SC.TitleArea value={editedTitle} onChange={editTitleHandler} />
             ) : (
-                <p>{selectedPost.title}</p>
+              <p>{selectedPost.title}</p>
             )}
           </SC.DetailTitleWrapper>
           <SC.Th>{selectedPost.name}</SC.Th>
           <SC.Th>{selectedPost.date}</SC.Th>
           <SC.DetailContentWrapper>
             {isEditMode ? (
-                <SC.ContentArea
-                  value={editedContent}
-                  onChange={(e) => setEditedContent(e.target.value)}
-                />
+              <SC.ContentArea
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+              />
             ) : (
-                <p>{selectedPost.content}</p>
+              <p>{selectedPost.content}</p>
             )}
           </SC.DetailContentWrapper>
         </SC.DetailModalBody>
@@ -66,13 +72,15 @@ const DetailModal = ({ isOpen, closeModal, selectedPost, onDelete, onModify }) =
           <SC.DetailDeleteButton onClick={onDelete}>
             <img src={dele} alt="Delete" />
           </SC.DetailDeleteButton>
-            {isEditMode ? (
-              <SC.DetailSaveButton onClick={handleSaveDetail}>Save</SC.DetailSaveButton>
-            ) : (
-              <SC.DetailModifyButton onClick={handleModifyDetail}>
-                <img src={modi} alt="Modify" />
-              </SC.DetailModifyButton>
-            )}
+          {isEditMode ? (
+            <SC.DetailSaveButton onClick={handleSaveDetail}>
+              Save
+            </SC.DetailSaveButton>
+          ) : (
+            <SC.DetailModifyButton onClick={handleModifyDetail}>
+              <img src={modi} alt="Modify" />
+            </SC.DetailModifyButton>
+          )}
         </SC.DetailModalFooter>
       </SC.DetailModalContent>
     </SC.DetailModalContainer>

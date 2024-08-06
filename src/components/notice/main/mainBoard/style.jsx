@@ -10,7 +10,7 @@ export const MainBoard = styled.div`
   position: absolute;
   width: calc(100% - 50vw / 2);
   height: 536px;
-  left: 295px;
+  left: 12.5%;
   top: 140px;
 `;
 

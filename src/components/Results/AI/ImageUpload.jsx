@@ -2,9 +2,11 @@ import { useState } from 'react';
 import axios from 'axios'; // axios를 임포트합니다.
 import * as SC from './style';
 import UploadForm from './UploadForm';
+import { IMGUPLOADURL } from '../../../tokens/Urls';
 
-const ImageUpload = () => {
+const ImageUpload = ({ setReceivedImg, receivedImg }) => {
   const [file, setFile] = useState(null);
+
   const [error, setError] = useState(''); // 오류 메시지 상태를 추가합니다.
   const allowedTypes = ['image/jpeg', 'image/png']; // 허용되는 이미지 파일 유형
 
@@ -48,21 +50,29 @@ const ImageUpload = () => {
       return;
     }
 
+    const token = localStorage.getItem('accessToken');
+
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('init_image', file);
 
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://192.168.0.6:8000/upload_csv/', // 서버의 파일 업로드 수정은 여기서
+        url: IMGUPLOADURL,
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
+        responseType: 'blob',
       });
       console.log('파일 전송 성공', response.data);
+
+      // Blob 데이터를 URL로 변환
+      const imgURL = URL.createObjectURL(response.data);
       alert('파일 전송 성공');
-      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화합니다.
+      setFile(null); // 파일 전송 성공 후 파일 상태를 초기화
+      setReceivedImg(imgURL); // 변환된 URL을 상태에 저장
     } catch (error) {
       console.error('파일 전송 실패', error);
       setError('파일 전송 실패. 다시 시도해주세요.');
@@ -71,7 +81,7 @@ const ImageUpload = () => {
 
   return (
     <SC.FooterContainer>
-      <div>
+      <SC.BtnContainer>
         <SC.FileInputLabel>
           파일 선택
           <SC.FileInput
@@ -83,17 +93,24 @@ const ImageUpload = () => {
         <SC.SubmitFileButton onClick={handleSubmit}>
           파일 보내기
         </SC.SubmitFileButton>
-      </div>
-      <div className="App">
+        {receivedImg && (
+          <SC.SubmitFileButton>
+            <SC.DownloadA href={receivedImg} download="result.png">
+              결과 다운로드
+            </SC.DownloadA>
+          </SC.SubmitFileButton>
+        )}
+      </SC.BtnContainer>
+      <SC.ImgUploadContainer className="App">
         <UploadForm
           file={file}
           handleDrop={handleDrop}
           handleDragOver={handleDragOver}
           handleCancel={handleCancel}
         />
-      </div>
-      {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
+      </SC.ImgUploadContainer>
       {/* 오류 메시지를 표시합니다. */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </SC.FooterContainer>
   );
 };

@@ -9,8 +9,6 @@ const EmailAuth = () => {
   const location = useLocation();
   const signUpInfo = location.state;
 
-  console.log(signUpInfo);
-
   return (
     <SC.SignIn>
       <SC.Header>

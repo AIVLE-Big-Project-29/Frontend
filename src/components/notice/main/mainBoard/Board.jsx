@@ -3,6 +3,10 @@ import * as SC from './style';
 import add from '../../../../assets/images/add.svg';
 import BoardTable from '../boardTable/BoardTable';
 import Modal from '../write/Modal';
+import axios from 'axios';
+import { BOARDCREATEURL } from '../../../../tokens/Urls';
+
+const token = localStorage.getItem('accessToken');
 
 const Board = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,10 +22,13 @@ const Board = ({ data }) => {
     try {
       const response = await axios({
         method: 'post',
-        url: 'http://172.30.1.84:8000/notice/board/', // 실제 서버 URL로 변경
+        url: BOARDCREATEURL, // 실제 서버 URL로 변경
         data: {
           title: title,
           content: content,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -32,7 +39,6 @@ const Board = ({ data }) => {
       console.error('Error saving post:', error);
     }
   };
-
 
   return (
     <SC.MainBoard>
@@ -45,7 +51,7 @@ const Board = ({ data }) => {
           </SC.HeaderBtn>
         </SC.HeaderGroup>
       </SC.BoardHeader>
-      <BoardTable data={data}/>
+      <BoardTable data={data} />
       {isModalOpen && <Modal isOpen={handleSave} closeModal={controlModel} />}
     </SC.MainBoard>
   );

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Fonts } from '../../../tokens/Font';
 
 export const Container = styled.div`
   display: flex;
@@ -61,7 +62,6 @@ export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
   margin: 20px 0;
   background: linear-gradient(
       0deg,
@@ -97,6 +97,7 @@ export const SubmitFileButton = styled.button`
   border: none;
   position: relative;
   top: -20px; /* 위치를 더 위로 올림 */
+  margin-right: 10px;
 `;
 
 export const UploadContainer = styled.div`
@@ -104,12 +105,10 @@ export const UploadContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 20px; /* 패딩 줄임 */
+  padding: 15px;
   border: 2px dashed rgba(127, 202, 33, 0.8);
   border-radius: 8px;
-  width: 150%; /* 가로 너비를 줄임 */
-  max-width: 800px; /* 최대 너비 줄임 */
-  margin-left: -25%;
+  width: 70%;
   box-sizing: border-box;
 `;
 
@@ -118,13 +117,13 @@ export const DragDropArea = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 150px; /* 높이를 줄임 */
+  height: 150px;
   border: 2px dashed #375739;
   border-radius: 8px;
   background-color: #f9f9f9;
-  max-width: 1000px; /* 최대 너비 설정 */
-  width: 80%; /* 너비를 늘림 */
-  margin: 0 auto; /* 가운데 정렬 */
+  max-width: 1000px;
+  width: 80%;
+  margin: 0 auto;
 `;
 
 export const FileInfo = styled.div`
@@ -161,11 +160,62 @@ export const CancelIcon = styled.img`
 `;
 
 export const UploadText = styled.p`
-  font-size: 16px;
+  width: 230px;
   color: #333;
-  min-width: 300px; /* 최소 너비 설정 */
-  max-width: 400px; /* 최대 너비 설정 */
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: pre-wrap;
+  ${Fonts['font-regular-14']}
+  font-size: 15px;
+`;
+
+export const ChartContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
+`;
+
+export const BtnContainer = styled.div`
+  height: 40px;
+`;
+
+export const ImgUploadContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+export const ExampleContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px dashed rgba(127, 202, 33, 0.8);
+  border-radius: 8px;
+`;
+
+export const ExampleText = styled.p`
+  margin: 0;
+  ${Fonts['font-regular-18']}
+  font-size: 17px;
+  font-weight: 700;
+  color: #355342;
+  width: 460px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const ExampleImg = styled.img`
+  height: 100%;
+  width: 100%;
+`;
+
+export const DownloadA = styled.a`
+  color: white;
+  ${Fonts['font-regular-18']}
+  font-size: 16px;
+  line-height: 20px;
 `;

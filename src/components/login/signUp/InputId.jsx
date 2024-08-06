@@ -27,7 +27,9 @@ const InputIdPw = ({ onChange, onSubmit, error }) => {
         name="confirmPw"
         placeholder="비밀번호 확인"
         onChange={onChange}
+        hasError={error.ConfirmPw}
       />
+      <SC.ErrorIdText>{error.ConfirmPw}</SC.ErrorIdText>
       <SC.InputBtn type="submit">
         <SC.BtnText>
           <SC.Text>Email Authentication</SC.Text>

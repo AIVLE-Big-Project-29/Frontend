@@ -58,25 +58,20 @@ export const TextTitle = styled.h2`
   width: 123.56px;
   height: 43px;
   margin: 0;
-
+  margin-bottom: 10px;
   ${Fonts['font-semibold-32']}
-
   display: flex;
   align-items: center;
-
   color: #355342;
 `;
 
 export const TextSubtitle = styled.p`
   width: 416.92px;
-  height: 74.19px;
-  margin: 0;
-
   ${Fonts['font-regular-16']}
-
+  height: 100px;
+  margin: 0;
   display: flex;
-  align-items: center;
-
+  align-items: flex-start;
   color: #355342;
 `;
 

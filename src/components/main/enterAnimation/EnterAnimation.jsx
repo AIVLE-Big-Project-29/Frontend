@@ -15,27 +15,29 @@ const EnterAnimation = () => {
   const wrap = useRef();
 
   useEffect(() => {
+    const windowHeight = window.innerHeight;
+
     gsap.to(wrapText.current, {
       y: 0,
       duration: 2,
     });
     gsap.to(wrap.current, {
-      y: -970,
+      y: -windowHeight,
       delay: 2.3,
       duration: 1.5,
     });
     gsap.to(slider1.current, {
-      y: -970,
+      y: -windowHeight,
       delay: 2.3,
       duration: 1.5,
     });
     gsap.to(slider2.current, {
-      y: -970,
+      y: -windowHeight,
       delay: 2.4,
       duration: 1.5,
     });
     gsap.to(slider3.current, {
-      y: -970,
+      y: -windowHeight,
       delay: 2.45,
       duration: 1.5,
     });

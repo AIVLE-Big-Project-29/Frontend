@@ -15,7 +15,9 @@ const UploadForm = ({ file, handleDrop, handleDragOver, handleCancel }) => {
             </SC.CancelButton>
           </SC.FileInfo>
         ) : (
-          <SC.UploadText>파일을 여기로 끌어다 놓으세요</SC.UploadText>
+          <SC.UploadText>
+            다운 받은 .jpg, .png를 여기로 끌어다 놓으세요
+          </SC.UploadText>
         )}
       </SC.DragDropArea>
     </SC.UploadContainer>

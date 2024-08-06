@@ -15,7 +15,7 @@ const FileUpload = ({ file, handleDrop, handleDragOver, handleCancel }) => {
             </SC.CancelButton>
           </SC.FileInfo>
         ) : (
-          <SC.UploadText>파일을 여기로 끌어다 놓으세요</SC.UploadText>
+          <SC.UploadText>.csv, .xlsx를 여기로 끌어다 놓으세요</SC.UploadText>
         )}
       </SC.DragDropArea>
     </SC.UploadContainer>

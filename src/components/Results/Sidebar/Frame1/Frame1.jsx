@@ -13,12 +13,14 @@ const Pages = () => {
       navigate('/main');
     } else if (txt === 'notice') {
       navigate('/notice');
+    } else if (txt === 'results') {
+      navigate('/results');
     }
   };
 
   return (
     <SC.PageMenu>
-      <Profile/>
+      <Profile />
       <SC.MenuTitle>
         <SC.Title>Pages</SC.Title>
       </SC.MenuTitle>
@@ -27,6 +29,9 @@ const Pages = () => {
       </SC.Menues>
       <SC.Menues onClick={() => clickHandler('notice')}>
         <MenuIconText src={notice} txt={'Notice'} />
+      </SC.Menues>
+      <SC.Menues onClick={() => clickHandler('results')}>
+        <MenuIconText src={notice} txt={'Results'} />
       </SC.Menues>
     </SC.PageMenu>
   );
