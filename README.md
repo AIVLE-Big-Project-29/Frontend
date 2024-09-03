@@ -55,7 +55,7 @@
 - 산점도 그래프에서 업로드한 데이터를 비교할 수 있도록 점을 클릭 시, 밑에 막대 그래프로 분석 결과를 확인 할 수 있습니다.
 - 막대 그래프는 최대 3개까지 나오고 다시 한 번 클릭하면 막대 그래프가 사라집니다.
 
-https://github.com/user-attachments/assets/e3225e4c-cd61-4e14-b2c8-83b618a63e83
+[https://github.com/user-attachments/assets/e3225e4c-cd61-4e14-b2c8-83b618a63e83](https://github.com/user-attachments/assets/626d54db-cec1-431b-95c0-6384a578c5cf)
 
 ### 조감도 출력
 
@@ -64,11 +64,9 @@ https://github.com/user-attachments/assets/e3225e4c-cd61-4e14-b2c8-83b618a63e83
 - 다운로드 받은 이미지를 옆의 파일 업로드 부분에 업로드한 뒤 파일 보내기 버튼을 클릭하면 <br>
 stable diffusion으로 생성한 조감도 이미지가 출력됩니다.
 
-https://github.com/user-attachments/assets/69c1ad07-7240-4535-9980-ee528759aee2
+[https://github.com/user-attachments/assets/69c1ad07-7240-4535-9980-ee528759aee2](https://github.com/user-attachments/assets/b7bbbf71-9563-4526-8d3b-d5ad49d07dcf)
 
 
 ## 📚 기술 스택
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white">
-### 라이브러리
-<img src="https://img.shields.io/badge/chartdotjs-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white">
 
