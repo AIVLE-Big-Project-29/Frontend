@@ -113,3 +113,33 @@ export const SectionTitle = styled.h2`
   ${Fonts['font-regular-18']};
   white-space: nowrap;
 `;
+
+export const SampleDownloadA = styled.a`
+  color: white;
+  ${Fonts['font-regular-16']}
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre;
+`;
+
+export const DownloadBtn = styled.button`
+  background: #375739;
+  color: white;
+  height: 35px;
+  width: 91px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const DownloadImg = styled.img`
+  width: 15px;
+  height: 15px;
+`;

@@ -12,4 +12,13 @@ export default defineConfig({
       },
     }),
   ],
+  // server: {
+  //   port: 3000,
+  //   host: true,
+  // },
+  preview: {
+    port: 5173,
+    host: '0.0.0.0',
+  },
+  assetsInclude: ['**/*.xlsx'], // .xlsx 파일 포함
 });

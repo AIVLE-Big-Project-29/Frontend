@@ -7,7 +7,7 @@ export const InnerFrame = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0px;
-  gap: 24px;
+  gap: 17px;
   width: 313px;
   height: 448px;
   border: none;
@@ -20,12 +20,27 @@ export const InnerFrame = styled.div`
 
 export const Logo = styled.div`
   width: 230px;
-  height: 180px;
+  height: 230px;
 `;
 
 export const LogoImg = styled.img`
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
+  width: 100%;
+  /* height: -webkit-fill-available; */
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const TextSmallWrapper = styled.div`
+  margin-top: -47px;
+`;
+
+export const ExplainText = styled.p`
+  margin: 0;
+  ${Fonts['font-regular-14']}
+  color: #797979;
+  text-align: center;
+  white-space: pre-wrap;
 `;
 
 export const TextWrapper = styled.div`
